@@ -56,7 +56,7 @@ So now you might think that you are ready to open source parts of your project a
 > - Not only you but your company also gets some *positive karma*.
 > - By making code visible for everyone you will think twice before adding an ugly hack since your professional repuration is on the line. This makes the code have slightly better quality.
 
-
+I think that the benefits outweight the drawbacks so there is no reason not to try OSS out. Go for it and feel free to share your experiences in the comment section or if you think otherwise.
 
 
 
