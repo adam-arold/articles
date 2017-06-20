@@ -1,40 +1,32 @@
-> If you have worked on a reasonably large project somewhere, chances are that the thought crossed your mind sometimes about
-making the code you produced available for others to use. In this article I try to sum up the Pros and the Cons about
-doing so and provide a few pointers why it is useful if you have never worked on OSS before.
+> Ha dolgoztál már valahol nagyobb projekten, akkor jó eséllyel eszedbe jutott már, hogy a kódot amit írsz lehet megérné nyílt forráskódúvá tenni. Ebben a cikkben összefoglalom az előnyeit és a hátrányait, valamint adok pár ötletet, hogy miért lehet hasznos, ha még sosem foglalkoztál nyílt forráskódú szoftverrel.
 
-Working on open source software (OSS in short) on your own time is fun. You get to choose what to work on, when to do it and how to do it. If you produce something which is useful for others, people will eventually start to use it and this is where interesting things start to happen.
+Nyílt forráskódú (továbbiakban [OSS](https://en.wikipedia.org/wiki/Open-source_software)) szoftveren dolgozni kifejezetten szórakoztató. Te választhatod meg, hogy min dolgozz, mikor tedd azt és hogyan. Ha valami másoknak is hasznosat írsz, akkor előbb-utóbb az emberek elkezdik használni azt és itt kezdődnek az igazán érdekes dolgok.
 
-## Pull requests
+## Pull request-ek (PR)
+Legtöbbször a felhasználóidnak nem lesz idejük, vagy kedvük hozzájárulni a projektedhez, de van pár programozó, aki szeret javításokat küldeni, amiket átböngészve rájöhetsz, hogy mások hogyan használják a programodat. Ha magának a PR-nek a minősége jó (tehát javítás, vagy új feature fejlesztés, ami tesztelve van) akkor jópár dolgot tudsz tanulni belőle:
+- Látni fogod __pontosan__, hogy mások hogyan használják a programodat
+- Azt is látni fogod, hogy __hogyan szeretnék__ használni
+- Illetve betekintést nyerhetsz a fejlesztő perspektívájába is, ami segíthet új szemszögből látni a dolgaidat
 
-Most of the time your users won't have the time to contribute something useful but there are some programmers who like to submit a patch or two which will provide insight to you about how your program is used. Given that you get a pull request which has reasonably good quality (fix or new feature with a bunch of unit tests) you will be able to deduce a bunch of things:
+## Hiba jelentések
+Azok a felhasználók, akik nem akarnak (vagy tudnak) hozzájárulni kóddal a projektedhez, de szeretnének rávilágítani egy hibára, hiba jelentést fognak küldnei neked. A legtöbb platform, ahol OSS kódot lehet host-olni rendelkezik olyan funkcióval, ahol ezt meg lehet tenni (például [GitHub](https://github.com/). Habár ezek nem annyira hasznosak, mint egy PR, tekinthetsz rájuk úgy, mint ingyen funkcionláis tesztelésre. Úgy, mint a PR-ek, a bug reportok is hasznosak abból a szempontból, hogy rávilágítanak arra, hogyan használják a szoftveredet és így rájöhetsz, hogy mikre nem gondoltál annak tervezése során.
 
-- You will see __exactly__ how your program is being used
-- You will know __how__ others would like to use your program
-- You will gain insight to the perspective to the developer who submitted the PR. This can be incredibly useful
+## Feature request-ek
+Néha-néha jönni fog pár ötlet a külvilágból, feature request-ek formájában. Ezek elég hasznosak, mert általában *valódi üzleti igényeket* oldalnak meg, illetve ha esetleg tanácstalan lennél, hogy merre haladj tovább, akkor segíthetnek kijelölni a projekted irányát.
 
-## Bug reports
+## Hozzájárulók és társak
+Előfordulhat, hogy valakit annyira érdekel a projekted, hogy többször is hozzájárul, vagy akár teljes értékű csapattaggá is válhat, ha rájöttök, hogy jól tudtok együtt dolgozni. Mondanom sem kell, hogy ez talán a legjobb dolog, ami történhet veled és annak is egy nyilvánvaló jele, hogy jó irányba haladsz a projekteddel.
 
-There will be some users who won't (or can't ) contribute to your project but want to leave a comment about a problem they encountered. Most platforms which host OSS projects support this out of the box ([GitHub](https://github.com/) for example). Although they are not as useful compared to a PR you can consider them as functional tests performed for free. Like with PR-s bug reports also provide you with insight about how your program is being used.
+## Hátulütők
+Annak ellenére, hogy az OSS fejlesztés sok előnnyel jár, vannak hátulütői is, amikbe előbb-utóbb bele fogsz futni. Ezeknek a többségét ki lehet küszöbölni, de jó, ha előre felkészülsz rájuk, ha nem akarod, hogy a projekted túlságosan időrablóvá váljon.
 
-## Feature requests
+## Alacsony színvonalú hozzájárulások
 
-From time to time you'll get some new ideas from the outside world in the form of feature requests. These are invaluable because they are solutions for a *real business need*. They also provide you with information about which direction you may steer the development especially if you are puzzled where you should go from where you stand.
+Csak idő kérdése, hogy mikor fogod megkapni az első PR-edet a pokolból. Az is lehet, hogy törni fogja a build-et, vagy csak simán nincsenek hozzá tesztek. Láttam olyan PR-t is, amiben a fél projektet refaktorálták, csak hogy egy generikus típus paramétert betehessenek, aminek nem volt valódi előnye sem. Ezeknek az elkerülésére az alábbi módokon tudsz felkészülni:
 
-## Contributors and committers
-
-It is possible that someone is so interested in your project that they become contributors and if it turns out that you can work together well they can also become committers. Needless to say that this is the best thing that can happen and it is also a sign of your project being in good shape.
-
-## Possible drawbacks
-
-Although there are a lot of advantages of OSS there are also some drawbacks which you will face sooner or later. Most of these can be mitigated but preparing for them is important if you don't want your project to become a time sink.
-
-### Low quality contributions
-
-It is just a matter if time when you will face the first PR from hell. It will either break your build, lack tests or worse. I've seen PRs which refactor major parts of a program just to add a generic type with little or no benefit and code which simply break the build. There are some things however which you can do __before__ you are presented with something like this:
-
-- Include a [Code of Conduct](https://en.wikipedia.org/wiki/Code_of_conduct) in your project. A good example can be found [here](http://contributor-covenant.org/version/1/1/0/). This is important because you don't want to seem ungrateful when someone spends his/her time on your project and you need to refuse a PR. By pointing them to the COC you can prevent losing face.
-- Add a [Contributor License Agreement](https://en.wikipedia.org/wiki/Contributor_License_Agreement). It is important to clarify who owns the [Intellectual Property](https://en.wikipedia.org/wiki/Intellectual_property). Failing to do so can lead to nasty disputes which won't make you happy. A nice example can be found [here](https://github.com/ReactiveX/RxJava/blob/2.x/CONTRIBUTING.md).
-- Use [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration). If you do it right you can delegate almost all quality assurance to a computer and you can also have them tell your contributors what they did wrong. Platforms like GitHub can be integrated with [Travis](https://travis-ci.org/) for example and also code coverage tools like [CodeCov](https://codecov.io/) which can even comment on pull requests like in [this](https://github.com/Hexworks/hexameter/pull/24) one.
+- Csapj hozzá egy COC ([Code of Conduct](https://en.wikipedia.org/wiki/Code_of_conduct))-ot a projektedhez. Egy jó példa [itt](http://contributor-covenant.org/version/1/1/0/) található. Ez azért fontos, mert nem akarsz majd hálátlannak tűnni, amikor valaki az idejét a projektedre áldozza, de ha van egy doksi, ahova összeírod, hogy hogyan szeretnéd, hogy mások hozzájáruljanak, akkor ez elkerülhető.
+- Tegyél fel egy CLA ([Contributor License Agreement](https://en.wikipedia.org/wiki/Contributor_License_Agreement))-t. Ez segít abban, hogy másoknak is egyértelmű legyen, hogy kié a projekt szellemi tulajdona ([Intellectual Property](https://en.wikipedia.org/wiki/Intellectual_property)). Ha ezt nem teszed meg, akkor belefuthatsz kötözködő emberekbe, akikkel vitázhattok ítéletnapig. Egy jó példa található [itt](https://github.com/ReactiveX/RxJava/blob/2.x/CONTRIBUTING.md).
+- Használj [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) rendszert. Ha jól csinálod, akkor a meló javarészét delegálhatod egy programnak, és a hozzájárulások automatikusan le lesznek fordítva, sőt egyes platformok (pl. GitHub) nagyon könnyen integrálhatók build eszközökkel, mint a [Travis](https://travis-ci.org/), vagy kód elemző szoftverekkel, mint a [CodeCov](https://codecov.io/), ami kommentelni is tud PR-ekre. Egy példát [itt](https://github.com/Hexworks/hexameter/pull/24) láthatsz.
 
 ### Too much buzz around your project
 
