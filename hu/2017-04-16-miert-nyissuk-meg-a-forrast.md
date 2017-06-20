@@ -28,30 +28,27 @@ Csak idő kérdése, hogy mikor fogod megkapni az első PR-edet a pokolból. Az 
 - Tegyél fel egy CLA ([Contributor License Agreement](https://en.wikipedia.org/wiki/Contributor_License_Agreement))-t. Ez segít abban, hogy másoknak is egyértelmű legyen, hogy kié a projekt szellemi tulajdona ([Intellectual Property](https://en.wikipedia.org/wiki/Intellectual_property)). Ha ezt nem teszed meg, akkor belefuthatsz kötözködő emberekbe, akikkel vitázhattok ítéletnapig. Egy jó példa található [itt](https://github.com/ReactiveX/RxJava/blob/2.x/CONTRIBUTING.md).
 - Használj [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) rendszert. Ha jól csinálod, akkor a meló javarészét delegálhatod egy programnak, és a hozzájárulások automatikusan le lesznek fordítva, sőt egyes platformok (pl. GitHub) nagyon könnyen integrálhatók build eszközökkel, mint a [Travis](https://travis-ci.org/), vagy kód elemző szoftverekkel, mint a [CodeCov](https://codecov.io/), ami kommentelni is tud PR-ekre. Egy példát [itt](https://github.com/Hexworks/hexameter/pull/24) láthatsz.
 
-### Too much buzz around your project
+### Túl sok hűhó a projekted körül
+Lehet, hogy kicsiben kezded, de ha elég időt beleraksz, akkor bármelyik projekt a következő Halál Csillaggá válhat. Az sem segít, ha népszerű lesz a programod és elárasztanak a PR-ek és a hiba jelentések. Habár ezek alapvetően jók a projekt szempontjából, előfordulhat, hogy azon kapod magad, hogy lett egy második főállásod.
 
-You may start with something small but any project can become the second Death Star if you put in the time and the effort. Also if your project gains attention you can find yourself in the situation when you are flooded with feature requests and bug reports. While these are good for your projects you may feel like having another full-time job which can consume a lot of your spare time.
+Erre a megoldás az lehet, ha bevonsz másokat is társként a projektbe, illetve ha nekilátsz SCRUM-ot, vagy Kanban-t használni a projekt menedzseléséhez.
 
-This can be worked around by letting proven contributors become committers and using a proper Kanban/Scrum board with a backlog and prioritizing tasks.
+### Licenszelési problémák
 
-### Licensing problems
+Előfordulhat, hogy egy túl megengedő licensz mellett döntöttél a projektedhez (mint pl. a MIT), vagy éppen fordítva, rájöttél, hogy a feltétleek túl szigorúak (pl. AGPL). Ahhoz, hogy ezt elkerüld érdemes [itt](https://choosealicense.com/) körülnézni.
 
-It is possible that you use a license like MIT which might be too permissive for your use case or AGPL which is too restricting. Choosing the right license is very important so I'd recommend perusing [this](https://choosealicense.com/) website for more information.
+## Mit mondhatsz a főnöködnek?
 
-## Things to tell your boss
+Ha esetleg úgy gondolnád, hogy van valamid, aminek érdemes megnyitni a forrását, vagy éppen a munkahelyeden vannak olyan projektek, amik erre alkalmasak, akkor egy elég nehéz feladat áll előtted: *meggyőzni a főnöködet*. Összegyűjtöttem pár tippet, ami segíthet ebben:
 
-So now you might think that you are ready to open source parts of your project at your workplace or your own hobby project. In the former case you have a sometimes very hard task ahead of you: *convincing your boss*. Here are a few tips you can leverage to make your idea pass:
+> - A forrás megnyitása *szinte semmilyen költséggel nem jár*
+> - Nem kell minden forrást megnyitni, elég csak azokat a részeket, melyek mások számára is hasznosak lehetnek. Ez abban is segít, hogy elgondolkodjatok azon, hogy érdemes modularizálni a kódot
+> - *Ingyen* hibajelentéseket, PR-eket, vagy hibajavításokat fogtok kapni
+> - A fejlesztők szeretnek olyan helyen dolgozni, ahol tudják, hogy a kód, amit írnak nyílt és így a hozzájárulásuk jobban látható a külvilág számára
+> - Nem csak te, de a cég is kap némi *pozitív karmát*
+> - Ha megnyitod a forrást, akkor kétszer is meggondolod, hogy hozzáadod-e azt a hekket, amit kitaláltál, mivel a saját megítélésedet is kockáztatod ezzel. Ettől a kód némileg jobb minőségű lesz.
 
-> - Open sourcing *comes at nearly no cost*
-> - You don't have to open source everything just the parts which might be useful for others. This also helps with the modularization of your program.
-> - You will get *free* bug reports, contributors or even core committers.
-> - Programmers like to work for companies where they know that their code can get open sourced which makes their contributions more visible to the outside world.
-> - Not only you but your company also gets some *positive karma*.
-> - By making code visible for everyone you will think twice before adding an ugly hack since your professional reputation is on the line. This makes the code have slightly better quality.
-
-I think that the benefits way outweigh the drawbacks so there is no reason not to try OSS out. Go for it and feel free to share your experiences in the comment section or if you think otherwise.
-
-
+Véleményem szerint a forrás megnyitása sokkal több előnnyel jár, mint hátránnyal, így érdemes próbát tenni vele. Ha esetleg van már tapasztalatod, vagy más véleményen vagy, akkor kíváncsian várom a hozzászólásodat a komment szekcióban.
 
 
 
