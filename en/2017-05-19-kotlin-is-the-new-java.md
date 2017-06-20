@@ -22,6 +22,24 @@ If you read the docs you can see a bunch of stuff going for it:
 
 Sounds cool, right? Let's just not drinnk the Kool-Aid too soon and see some examples how well it fares compared to Java.
 
+## Value objects vs data classes
+
+## String interpolation
+
+## Extension methods
+
+## Null safety
+
+## Type Inference
+
+## No checked exceptions
+
+## Lambda support
+
+## Functional programming
+
+## Kotlin-java interoperation
+
 ## Things to tell your boss
 
 So if you want to give it a try here are some pointers which will help you when negotiating with your boss and teammates:
@@ -29,16 +47,11 @@ So if you want to give it a try here are some pointers which will help you when 
 - It is free and Open Source
 - It comes with a useful Java to Kotlin converter tool
 - You can mix Kotlin and Java with __0 effort__
-- Can use all existing java tools/frameworks
+- You can use *all* existing java tools/frameworks
+- Kotlin is supported by the best IDE on the market (with free version)
+- It is easy to read, even non-Kotlin programmers can review your code
+- **You don’t need to commit** your project to Kotlin: *you can start by writing your tests in it*
+- JetBrains is not likely to abandon Kotlin because it drives their sales
+- Kotlin has a vibrant community and even you can easily contribute to Kotlin and suggest new features using [KEEP](https://github.com/Kotlin/KEEP)
 
-
-Supported by the best IDE on the market (with free version)
-
-
-Easy to read, even non-Kotlin programmers can review your code
-
-
-You don’t need to commit your project to Kotlin: you can start by writing your tests in it
-
-
-JetBrains is not likely to abandon Kotlin because it drives their sales
+So does it live up to the hype? Only you can tell.
