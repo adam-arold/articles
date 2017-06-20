@@ -9,7 +9,7 @@ Legtöbbször a felhasználóidnak nem lesz idejük, vagy kedvük hozzájárulni
 - Illetve betekintést nyerhetsz a fejlesztő perspektívájába is, ami segíthet új szemszögből látni a dolgaidat
 
 ## Hiba jelentések
-Azok a felhasználók, akik nem akarnak (vagy tudnak) hozzájárulni kóddal a projektedhez, de szeretnének rávilágítani egy hibára, hiba jelentést fognak küldnei neked. A legtöbb platform, ahol OSS kódot lehet host-olni rendelkezik olyan funkcióval, ahol ezt meg lehet tenni (például [GitHub](https://github.com/). Habár ezek nem annyira hasznosak, mint egy PR, tekinthetsz rájuk úgy, mint ingyen funkcionláis tesztelésre. Úgy, mint a PR-ek, a bug reportok is hasznosak abból a szempontból, hogy rávilágítanak arra, hogyan használják a szoftveredet és így rájöhetsz, hogy mikre nem gondoltál annak tervezése során.
+Azok a felhasználók, akik nem akarnak (vagy tudnak) hozzájárulni kóddal a projektedhez, de szeretnének rávilágítani egy hibára, hiba jelentést fognak küldeni neked. A legtöbb platform, ahol OSS kódot lehet host-olni rendelkezik olyan funkcióval, ahol ezt meg lehet tenni (például [GitHub](https://github.com/). Habár ezek nem annyira hasznosak, mint egy PR, tekinthetsz rájuk úgy, mint ingyen funkcionális tesztelésre. Úgy, mint a PR-ek, a bug reportok is hasznosak abból a szempontból, hogy rávilágítanak arra, hogyan használják a szoftveredet és így rájöhetsz, hogy mikre nem gondoltál annak tervezése során.
 
 ## Feature request-ek
 Néha-néha jönni fog pár ötlet a külvilágból, feature request-ek formájában. Ezek elég hasznosak, mert általában *valódi üzleti igényeket* oldalnak meg, illetve ha esetleg tanácstalan lennél, hogy merre haladj tovább, akkor segíthetnek kijelölni a projekted irányát.
@@ -26,7 +26,7 @@ Csak idő kérdése, hogy mikor fogod megkapni az első PR-edet a pokolból. Az 
 
 - Csapj hozzá egy COC ([Code of Conduct](https://en.wikipedia.org/wiki/Code_of_conduct))-ot a projektedhez. Egy jó példa [itt](http://contributor-covenant.org/version/1/1/0/) található. Ez azért fontos, mert nem akarsz majd hálátlannak tűnni, amikor valaki az idejét a projektedre áldozza, de ha van egy doksi, ahova összeírod, hogy hogyan szeretnéd, hogy mások hozzájáruljanak, akkor ez elkerülhető.
 - Tegyél fel egy CLA ([Contributor License Agreement](https://en.wikipedia.org/wiki/Contributor_License_Agreement))-t. Ez segít abban, hogy másoknak is egyértelmű legyen, hogy kié a projekt szellemi tulajdona ([Intellectual Property](https://en.wikipedia.org/wiki/Intellectual_property)). Ha ezt nem teszed meg, akkor belefuthatsz kötözködő emberekbe, akikkel vitázhattok ítéletnapig. Egy jó példa található [itt](https://github.com/ReactiveX/RxJava/blob/2.x/CONTRIBUTING.md).
-- Használj [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) rendszert. Ha jól csinálod, akkor a meló javarészét delegálhatod egy programnak, és a hozzájárulások automatikusan le lesznek fordítva, sőt egyes platformok (pl. GitHub) nagyon könnyen integrálhatók build eszközökkel, mint a [Travis](https://travis-ci.org/), vagy kód elemző szoftverekkel, mint a [CodeCov](https://codecov.io/), ami kommentelni is tud PR-ekre. Egy példát [itt](https://github.com/Hexworks/hexameter/pull/24) láthatsz.
+- Használj [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) rendszert. Ha jól csinálod, akkor a meló java részét delegálhatod egy programnak, és a hozzájárulások automatikusan le lesznek fordítva, sőt egyes platformok (pl. GitHub) nagyon könnyen integrálhatók build eszközökkel, mint a [Travis](https://travis-ci.org/), vagy kód elemző szoftverekkel, mint a [CodeCov](https://codecov.io/), ami kommentelni is tud PR-ekre. Egy példát [itt](https://github.com/Hexworks/hexameter/pull/24) láthatsz.
 
 ### Túl sok hűhó a projekted körül
 Lehet, hogy kicsiben kezded, de ha elég időt beleraksz, akkor bármelyik projekt a következő Halál Csillaggá válhat. Az sem segít, ha népszerű lesz a programod és elárasztanak a PR-ek és a hiba jelentések. Habár ezek alapvetően jók a projekt szempontjából, előfordulhat, hogy azon kapod magad, hogy lett egy második főállásod.
@@ -35,7 +35,7 @@ Erre a megoldás az lehet, ha bevonsz másokat is társként a projektbe, illetv
 
 ### Licenszelési problémák
 
-Előfordulhat, hogy egy túl megengedő licensz mellett döntöttél a projektedhez (mint pl. a MIT), vagy éppen fordítva, rájöttél, hogy a feltétleek túl szigorúak (pl. AGPL). Ahhoz, hogy ezt elkerüld érdemes [itt](https://choosealicense.com/) körülnézni.
+Előfordulhat, hogy egy túl megengedő licensz mellett döntöttél a projektedhez (mint pl. a MIT), vagy éppen fordítva, rájöttél, hogy a feltételek túl szigorúak (pl. AGPL). Ahhoz, hogy ezt elkerüld érdemes [itt](https://choosealicense.com/) körülnézni.
 
 ## Mit mondhatsz a főnöködnek?
 
