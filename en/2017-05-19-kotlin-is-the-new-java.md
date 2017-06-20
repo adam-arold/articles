@@ -1,7 +1,7 @@
 > If you are a Java developer for a while now you might be wondering what to learn next.
 > There are a bunch of languages out there which worth a look, like [Clojure](https://clojure.org/), [Rust](https://www.rust-lang.org/en-US/) or [Haskell](https://www.haskell.org/).
 > But what if you want to learn something with which you can pay the bills but it is not a pain to use?
-> Kotlin is in the sweet spot and in this article my goal is to explain why.
+> Kotlin is in the sweet spot just where Java used to be and in this article my goal is to explain why.
 
 ## So what is Kotlin?
 - A home-grown programming language by [JetBrains](https://www.jetbrains.com/) who are the masterminds behind the acclaimed [IDEA](https://www.jetbrains.com/idea/) IDE and a bunch of other stuff.
