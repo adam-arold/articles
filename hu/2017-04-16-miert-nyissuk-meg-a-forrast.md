@@ -48,7 +48,7 @@ Ha esetleg úgy gondolnád, hogy van valamid, aminek érdemes megnyitni a forrá
 > - Nem csak te, de a cég is kap némi *pozitív karmát*
 > - Ha megnyitod a forrást, akkor kétszer is meggondolod, hogy hozzáadod-e azt a hekket, amit kitaláltál, mivel a saját megítélésedet is kockáztatod ezzel. Ettől a kód némileg jobb minőségű lesz.
 
-Véleményem szerint a forrás megnyitása sokkal több előnnyel jár, mint hátránnyal, így érdemes próbát tenni vele. Ha esetleg van már tapasztalatod, vagy más véleményen vagy, akkor kíváncsian várom a hozzászólásodat a komment szekcióban.
+Véleményem szerint a forrás megnyitása sokkal több előnnyel jár, mint hátránnyal, így érdemes próbát tenni vele. Ha esetleg van már tapasztalatod, vagy más véleményen vagy, akkor kíváncsian várom a hozzászólásodat a komment szekcióban...
 
 
 
