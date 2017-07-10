@@ -300,18 +300,15 @@ The same would look like this in Kotlin:
 ```kotlin
 class KotlinLineLoader {
 
-    /**
-     * Kotlin does away with checked exceptions *and*
-     * it also adds commonly used functionality to existing
-     * java classes (like `readLines` here).
-     */
     fun loadLines(path: String) = File(path).readLines()
 }
 ```
 There are a couple of things going on here. First Kotlin does away with checked exceptions. Secondly Kotlin adds
 `use` to any `Closeable` object which basically:
+
 > Executes the given [block] function on this resource and then closes it down correctly whether an exception is thrown or not.
 > (Taken from Kotlin's documentation)
+
 What you can also see here is that an extension function (`readLines`) is added to the `File` class. This pattern is visible throughout Kotlin's rather small standard library. If you have ever used Guava, Apache Commons or something similar, chances are that you will see common functionality from them added to a JDK class as an extension function. Needless to say this will be good for your health (nerves at least).
 
 ## Lambda support
