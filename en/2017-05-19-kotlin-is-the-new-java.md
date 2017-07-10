@@ -443,3 +443,4 @@ Here are a few pointers where you can start:
 - [Kotlin Koans](https://kotlinlang.org/docs/tutorials/koans.html)
 - [Kotlin Blog](https://blog.jetbrains.com/kotlin/) <-- this will keep you up to date
 - [Awesome Kotlin](https://kotlin.link/) <-- Curated list of Kotlin resources and libraries
+- You can also check the source of the examples presented in this article [here](https://github.com/AppCraft-Projects/java-to-kotlin-examples).
