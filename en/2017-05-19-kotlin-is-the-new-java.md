@@ -82,8 +82,8 @@ Creating value objects is really cumbersome even with the usage of libraries lik
 data class HexagonDataClass(val x: Int, val y: Int, val z: Int)
 ```
 Whoa! That's quite less typing compared to the Java version. Data classes in Kotlin give you
-- equals + hashCode and
-- toString in addition to
+- `equals` + `hashCode` and
+- `toString` in addition to
 - getters and setters.
 You can also `copy` them which effectively creates a new object with some fields overwritten. See [here](https://kotlinlang.org/docs/reference/data-classes.html) for more information on this topic.
 
