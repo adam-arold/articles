@@ -220,7 +220,7 @@ data class KotlinUserWithoutNulls(val firstName: String, // this parameter can't
 ```
 If there are no `null`s involved (no `?`s present) it all becomes a lot more simpler.
 
-[[https://github.com/adam-arold/articles/blob/master/images/cant_explain_nulls.jpg|can't explain that]]
+![can't explain that](https://github.com/adam-arold/articles/blob/master/images/cant_explain_nulls.jpg)
 
 ## Type Inference
 Kotlin supports type inference which means that it can derive types from the context in which they are present.
