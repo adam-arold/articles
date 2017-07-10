@@ -24,6 +24,7 @@ Sounds cool, right? Let's just not drink the Kool-Aid too soon and see some exam
 
 ## Value objects vs data classes
 What you see here is a POJO with all the boilerplate:
+
 ```java
 /**
  * A plain old Java object with all the boilerplate.
@@ -77,10 +78,13 @@ public class HexagonValueObject {
     }
 }
 ```
+
 Creating value objects is really cumbersome even with the usage of libraries like Lombok. At least IDEA (or Eclipse) gives you a little help with generating a lot of these methods but adding a field and forgetting to modify the `equals` method will lead to nasty surprises. Let's look at the Kotlin equivalent:
+
 ```kotlin
 data class HexagonDataClass(val x: Int, val y: Int, val z: Int)
 ```
+
 Whoa! That's quite less typing compared to the Java version. Data classes in Kotlin give you
 - `equals` + `hashCode` and
 - `toString` in addition to
@@ -90,6 +94,8 @@ You can also `copy` them which effectively creates a new object with some fields
 ## String interpolation
 String manipulation in Java is painful. It can be alleviated by using `String.format` but
 it will still remain ugly.
+
+
 ```java
 public class JavaUser {
     private final String name;
@@ -107,20 +113,25 @@ public class JavaUser {
     }
 }
 ```
+
 Kotlin works around this by adding [String interpolation](https://stackoverflow.com/questions/37442198/how-does-string-interpolation-work-in-kotlin) to the mix with which it is a bit simpler to
 use variables in String literals. You can even call methods from one!
+
 ```kotlin
 class KotlinUser(val name: String, val age: Int) {
 
     fun toHumanReadableFormat() = "JavaUser{name='$name', age=$age}"
 
-    fun toHumanReadableFormatWithMethodCall() = "JavaUser{name='${name.capitalize()}', age=$age}"
+    fun toHumanReadableFormatWithMethodCall()
+     = "JavaUser{name='${name.capitalize()}', age=$age}"
 }
 ```
+
 ## Extension methods
 Writing decorators in Java can be tricky and they are not perfect. If you want to write a decorator which
 can be used with all classes implementing `List` you can't simply use it in your decorator because it would need you to
 implement a lot of other methods so you have to extend `AbstractList`.
+
 ```java
 public class ListPresenterDecorator<T> extends AbstractList<T> {
 
@@ -146,12 +157,15 @@ public class ListPresenterDecorator<T> extends AbstractList<T> {
         return list.size();
     }
 }
-``` 
+```
+
 If you need to decorate something which does not provide useful base classes like `AbstractList`
 or is a `final` class then you are out of luck. Extension methods come to the rescue!
+
 ```kotlin
 fun <T> List<T>.present() = this.joinToString(", ")
 ```
+
 This method acts as a decorator for all `List`s. Compared to the Java alternative this one-liner is much simpler and it will
 also work for `final` classes. Just try not to [abuse](https://www.philosophicalhacker.com/post/how-to-abuse-kotlin-extension-functions/) them.
 
@@ -160,6 +174,7 @@ Checking for `null` values involves a lot of boolean expressions and a lot of bo
 you can finally work around this with the `Optional` class but what if the reference to an `Optional` is `null`?
 Yes, you'll get a `NullPointerException` and after 20 years of Java we still don't know **what** was null.
 Take the following example:
+
 ```java
 public class JavaUser {
 
@@ -186,9 +201,12 @@ public class JavaUser {
     }
 }
 ```
+
 With Kotlin you have several options. If you have to interop with Java projects you can use the null safety operator (`?`):
+
 ```kotlin
-data class KotlinUserWithNulls(val firstName: String?, // String? means that it is either a String object or a null
+data class KotlinUserWithNulls(val firstName: String?,
+                               // String? means that it is either a String object or a null
                                val lastName: String?,
                                val addresses: List<Address> = listOf()) {
 
@@ -202,22 +220,27 @@ data class KotlinUserWithNulls(val firstName: String?, // String? means that it 
     }
 }
 ```
+
 The code will only run after a `?` if its left operand is not `null`.
 The `let` function creates a local binding for the object it was called upon
 so here `it` will point to `it.city`.
 If you don't have to interop with Java I would suggest doing away with `null`s completely:
+
 ```kotlin
-data class KotlinUserWithoutNulls(val firstName: String, // this parameter can't be null
+data class KotlinUserWithoutNulls(val firstName: String,
+                                  // this parameter can't be null
                                   val lastName: String,
                                   val addresses: List<Address> = listOf()) {
 
     data class Address(val city: String)
 
     companion object {
-        fun fetchFirstCity(user: KotlinUserWithNulls) = user.addresses.first().city
+        fun fetchFirstCity(user: KotlinUserWithNulls)
+         = user.addresses.first().city
     }
 }
 ```
+
 If there are no `null`s involved (no `?`s present) it all becomes a lot more simpler.
 
 ![can't explain that](https://github.com/adam-arold/articles/blob/master/images/cant_explain_nulls.jpg)
@@ -225,6 +248,7 @@ If there are no `null`s involved (no `?`s present) it all becomes a lot more sim
 ## Type Inference
 Kotlin supports type inference which means that it can derive types from the context in which they are present.
 This is like the Java diamond notation `<>` but on steroids! Take the following example:
+
 ```java
 public class JavaUser {
 
@@ -240,7 +264,9 @@ public class JavaUser {
     }
 }
 ```
+
 This looks almost the same in Kotlin:
+
 ```kotlin
 data class KotlinUser(val firstName: String,
                       val lastName: String,
@@ -257,7 +283,9 @@ data class KotlinUser(val firstName: String,
     }
 }
 ```
+
 Until you let Kotlin figure out the types of your variables:
+
 ```kotlin
 /**
  * Here the type of `firstAddress` is inferred from the context.
@@ -267,7 +295,9 @@ fun getFirstAddressInferred(): Address {
     return firstAddress
 }
 ```
+
 or even methods:
+
 ```kotlin
 /**
  * Here the return type is inferred. Note that
@@ -276,8 +306,10 @@ or even methods:
  */
 fun getFirstAddress() = addresses.first()
 ```
+
 ## No checked exceptions
 You must have seen this piece of code at least a million times:
+
 ```java
 public class JavaLineLoader {
 
@@ -295,14 +327,17 @@ public class JavaLineLoader {
     }
 }
 ```
+
 Old school IO in Java. Note the try with resources block!
 The same would look like this in Kotlin:
+
 ```kotlin
 class KotlinLineLoader {
 
     fun loadLines(path: String) = File(path).readLines()
 }
 ```
+
 There are a couple of things going on here. First Kotlin does away with checked exceptions. Secondly Kotlin adds
 `use` to any `Closeable` object which basically:
 
@@ -313,6 +348,7 @@ What you can also see here is that an extension function (`readLines`) is added 
 
 ## Lambda support
 Let's look at the lambda support in Java:
+
 ```java
 public class JavaFilterOperation {
 
@@ -331,16 +367,19 @@ public class JavaFilterOperation {
 
     public void doFilter() {
         filterBy((element) -> {
-            return element.length() > 0; // calling the function with an actual lambda
+            return element.length() > 0;
+            // calling the function with an actual lambda
         });
     }
 }
 ```
+
 Since there is no syntax for method parameter types we have to create an interface for it.
 Note that we could use `Function<String, Boolean>` here but it only works for functions with one parameter!
 There are some interfaces in the JDK to solve this problem but if someone looks at the code they might be puzzled what
 a `BiFunction` is useful for?
 Kotlin improves on this a bit:
+
 ```kotlin
 class KotlinFilterOperation {
 
@@ -349,19 +388,24 @@ class KotlinFilterOperation {
     fun filterBy(fn: (String) -> Boolean) = items.filter(fn)
 
     fun doFilter() {
-        filterBy(String::isNotEmpty) // note the exension function `isNotEmpty` added to `String`!
+        filterBy(String::isNotEmpty)
+        // note the exension function `isNotEmpty` added to `String`!
     }
 }
 ```
+
 Kotlin adds a syntax for passing functions as parameters: `(ParamType1, ...ParamTypeN) -> ReturnType`.
 And with Kotlin you have method and field references and you can also refer to a method from a concrete object!
 Using the example above I can refer to the `filterBy` function on a concrete instance like this:
+
 ```kotlin
 val reference = KotlinFilterOperation()::filterBy
 ```
+
 ## Functional programming
 Functional programming is all the buzz nowadays and with Java 8 they have released Oracle's take on the topic: the Stream API.
 It works like this:
+
 ```java
 public class JavaUser {
  
@@ -375,13 +419,16 @@ public class JavaUser {
     }
 }
 ```
+
 The Kotlin equivalent is rather similar, but subtly different:
+
 ```kotlin
     fun fetchCitiesOfUsers(users: List<KotlinUser>) = users
             .flatMap(KotlinUser::addresses)
             .map(Address::city)
             .toSet()
-```     
+```
+
 There is no explicit conversion to streams since all Kotlin collections support it out of the box.
 Not having to pass a lambda to `flatMap` here is a direct consequence of this.
 Collecting the result is also automatic (no need for `Collectors.to*` method calls).
@@ -389,6 +436,7 @@ We only had to use `toSet` here because we want to return a `Set`. Otherwise `.t
 
 ## Kotlin-java interoperation
 Well this can be a dealbreaker for most people but JetBrains got this right:
+
 ```java
 public class KotlinInterop {
 
@@ -401,6 +449,8 @@ public class KotlinInterop {
     }
 }
 ```
+
+
 ```kotlin
 class JavaInterop {
 
@@ -419,12 +469,14 @@ class JavaInterop {
     }
 }
 ```
+
 The interop is seamless and painless. Java and Kotlin can live together in the same project and Kotlin supplies a set of annotations (like `@JvmStatic` here) so Kotlin code can be called from Java without any fuss. Check [here](https://kotlinlang.org/docs/reference/java-interop.html) for further information on this topic.
 
 As you might have seen from these examples Kotlin takes the good ideas from Java, improves upon them and tries to keep the WTF/minute counter to a minimum. The recent news about Google making Kotlin one of the supported languages on Android also underpins this.
 
 ## Things to tell your boss
 So if you want to give it a try here are some pointers which will help you when negotiating with your boss and teammates:
+
 - Kotlin comes from industry, not academia. It solves problems faced by working programmers today.
 - It is free and Open Source
 - It comes with a useful Java to Kotlin converter tool
@@ -438,6 +490,7 @@ So if you want to give it a try here are some pointers which will help you when 
 
 So does it live up to the hype? Only you can tell.
 Here are a few pointers where you can start:
+
 - [Kotlin Tutorials](https://kotlinlang.org/docs/tutorials/)
 - [The Kotlin Reddit](https://www.reddit.com/r/Kotlin/)
 - [Kotlin Koans](https://kotlinlang.org/docs/tutorials/koans.html)
