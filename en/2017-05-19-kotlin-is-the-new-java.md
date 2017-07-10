@@ -77,7 +77,7 @@ public class HexagonValueObject {
     }
 }
 ```
-Creating value objects is really cumbersome even with the usage of libraries like Lombok. At least IDEA (or Eclipse) gives you a little help with generating a lot of these methods but when you add a field and forget to modify the `equals` method will lead to nasty surprises. Let's look at the Kotlin equivalent:
+Creating value objects is really cumbersome even with the usage of libraries like Lombok. At least IDEA (or Eclipse) gives you a little help with generating a lot of these methods but adding a field and forgetting to modify the `equals` method will lead to nasty surprises. Let's look at the Kotlin equivalent:
 ```kotlin
 data class HexagonDataClass(val x: Int, val y: Int, val z: Int)
 ```
