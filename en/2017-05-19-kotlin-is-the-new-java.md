@@ -26,7 +26,7 @@ Sounds cool, right? Let's just not drink the Kool-Aid too soon and see some exam
 What you see here is a POJO with all the boilerplate:
 ```java
 /**
- * A plain old java object with all the boilerplate.
+ * A plain old Java object with all the boilerplate.
  */
 public class HexagonValueObject {
 
@@ -88,7 +88,7 @@ Whoa! That's quite less typing compared to the Java version. Data classes in Kot
 You can also `copy` them which effectively creates a new object with some fields overwritten. See [here](https://kotlinlang.org/docs/reference/data-classes.html) for more information on this topic.
 
 ## String interpolation
-String manipulation in java is painful. It can be alleviated by using `String.format` but
+String manipulation in Java is painful. It can be alleviated by using `String.format` but
 it will still remain ugly.
 ```java
 public class JavaUser {
