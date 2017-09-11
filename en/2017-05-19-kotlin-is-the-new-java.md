@@ -79,7 +79,7 @@ public class HexagonValueObject {
 }
 ```
 
-Creating value objects is really cumbersome even with the usage of libraries like Lombok. At least IDEA (or Eclipse) gives you a little help with generating a lot of these methods but adding a field and forgetting to modify the `equals` method will lead to nasty surprises. Let's look at the Kotlin equivalent:
+Creating value objects is really cumbersome even with the usage of libraries like Lombok (Lombok needs you to install a plugin to your IDE in order for it to work which might not be an option for all IDEs. It can be worked around with tools like Delombok but it is a hack at best. Read more [here](https://projectlombok.org/features/delombok)) At least IDEA (or Eclipse) gives you a little help with generating a lot of these methods but adding a field and forgetting to modify the `equals` method will lead to nasty surprises. Let's look at the Kotlin equivalent:
 
 ```kotlin
 data class HexagonDataClass(val x: Int, val y: Int, val z: Int)
@@ -127,7 +127,7 @@ class KotlinUser(val name: String, val age: Int) {
 }
 ```
 
-## Extension methods
+## Extension functions
 Writing decorators in Java can be tricky and they are not perfect. If you want to write a decorator which
 can be used with all classes implementing `List` you can't simply use it in your decorator because it would need you to
 implement a lot of other methods so you have to extend `AbstractList`.
