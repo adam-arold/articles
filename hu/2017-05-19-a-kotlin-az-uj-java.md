@@ -1,29 +1,29 @@
-> If you are a Java developer for a while now you might be wondering what to learn next.
-> There are a bunch of languages out there which worth a look, like [Clojure](https://clojure.org/), [Rust](https://www.rust-lang.org/en-US/) or [Haskell](https://www.haskell.org/).
-> But what if you want to learn something with which you can pay the bills but it is not a pain to use?
-> Kotlin is in the sweet spot just where Java used to be and in this article my goal is to explain why.
+> Ha már Java fejlesztőként dolgozol egy ideje, akkor talán már elgondolkoztál azon, hogy mit tanulj meg legközelebb.
+> Van jópár nyelv, amikre érdemes ránézni, például a  [Clojure](https://clojure.org/), a [Rust](https://www.rust-lang.org/en-US/) vagy a [Haskell](https://www.haskell.org/), de mi van akkor, ha olyan nyelvet szeretnél tanulni, amivel pénzt is lehet keresni és emellett kellemes vele kódot írni?
+> A Kotlin pont egy ilyen nyelv és ebben a cikkben szeretném bemutatni, hogy miért.
 
-## So what is Kotlin?
-- A home-grown programming language by [JetBrains](https://www.jetbrains.com/) who are the masterminds behind the acclaimed [IDEA](https://www.jetbrains.com/idea/) IDE and a bunch of other stuff.
-- A simple and flexible alternative to Java
-- Which interoperates well with existing Java code
-- Compiles to Java bytecode
-- Runs on the JVM
-- And also compiles to javascript
+## Szóval mi is a Kotlin?
 
-If you read the docs you can see a bunch of stuff going for it:
-- It lets you achieve more with less code
-- Solve a lot of problems in Java
-- Helps you keep using the Java ecosystem
-- Lets you write front-end and back-end code in the same language
-- Gives you 100% Java interoperability
-- It does well compared to the alternatives (Clojure, Scala)
-- Adds only a thin layer of complexity over Java
+- A [JetBrains](https://www.jetbrains.com/) saját fejlesztésű programozási nyelve, azé a cégé, akik az [IDEA](https://www.jetbrains.com/idea/) fejlesztői környezet mögött is állnak.
+- Egy egyszerű, és sokoldalú Java alternatíva
+- Ami kifogástalan együttműködésre képes a Java-val
+- Java bájtkódra fordul
+- A JVM-en fut
+- Továbbá képes Javascript-re is fordulni
 
-Sounds cool, right? Let's just not drink the Kool-Aid too soon and see some examples how well it fares compared to Java.
+Ha elolvassuk a dokumentációt, akkor találhatunk még pár ígéretes dolgot:
+- Többet elérhetünk kevesebb kód írásával
+- Megold sok problémát a Java-val
+- Továbbra is használhatjuk a Java ökoszisztémát vele
+- Frontend és backend kódot is tudunk írni ugyanazon a nyelven
+- 100%-ban együttműködő a Java-val
+- Jobban teljesít e tekintetben, mint más alternatívák (Clojure, Scala)
+- És csak egy vékony réteg komplexitást ad hozzá a Java-hoz
 
-## Value objects vs data classes
-What you see here is a POJO with all the boilerplate:
+Jól hangzik, nem? Mielőtt rátenyerelünk a Letöltés gombra azért még tekintsük át, hogy mit is jelent ez a gyakorlatban.
+
+## Érték- és adatosztályok
+Amit itt láthatunk, az egy jó öreg POJO a szokásos boilerplate kóddal:
 
 ```java
 /**
@@ -79,17 +79,22 @@ public class HexagonValueObject {
 }
 ```
 
-Creating value objects is really cumbersome even with the usage of libraries like Lombok (Lombok needs you to install a plugin to your IDE in order for it to work which might not be an option for all IDEs. It can be worked around with tools like Delombok but it is a hack at best. Read more [here](https://projectlombok.org/features/delombok)) At least IDEA (or Eclipse) gives you a little help with generating a lot of these methods but adding a field and forgetting to modify the `equals` method will lead to nasty surprises. Let's look at the Kotlin equivalent:
+Az érték osztályok készítése elég nehézkes még akkor is, ha Lombokot használunk (a Lombok használatához telepíteni kell egy beépülő modult a fejlesztői környezetünkbe, ami nem minden esetben megoldható). Habár ehhez segítséget nyújt az IDEA (illetve az Eclipse), különbféle kódgeneráló eszközökkel, ezek nem igazán megbízhatóak (gondoljunk csak arra, amikor hozzáadunk egy új mezőt az osztályhoz és elfelejtjük újragenerálni az `equals` metódust.
+
+Nézzük meg hogy néz ki ugyanez Kotlinban:
 
 ```kotlin
 data class HexagonDataClass(val x: Int, val y: Int, val z: Int)
 ```
 
-Whoa! That's quite less typing compared to the Java version. Data classes in Kotlin give you
-- `equals` + `hashCode` and
-- `toString` in addition to
-- getters and setters.
-You can also `copy` them which effectively creates a new object with some fields overwritten. See [here](https://kotlinlang.org/docs/reference/data-classes.html) for more information on this topic.
+Hoppá! Ehhez lényegesen kevesebbet kellett gépelni a Java verzióhoz képest! A Kotlin adat osztályok a következőket adják:
+- `equals` + `hashCode`,
+- `toString` és
+- getterek + setterek
+Ezeken kívül megkapjuk a `copy` metódust, amivel másolatokat tudunk készíteni már meglévő adat osztály példányokról. Erről [itt](https://kotlinlang.org/docs/reference/data-classes.html) lehet többet olvasni.
+
+
+
 
 ## String interpolation
 String manipulation in Java is painful. It can be alleviated by using `String.format` but
