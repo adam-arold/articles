@@ -96,10 +96,8 @@ Ezeken kívül megkapjuk a `copy` metódust, amivel másolatokat tudunk készít
 
 
 
-## String interpolation
-String manipulation in Java is painful. It can be alleviated by using `String.format` but
-it will still remain ugly.
-
+## String interpoláció
+A `String`-ek manipulálása Java-ban nem éppen kényelmes művelet. Ezen segíthet a `String.format`, de nem túl sokat.
 
 ```java
 public class JavaUser {
@@ -118,9 +116,7 @@ public class JavaUser {
     }
 }
 ```
-
-Kotlin works around this by adding [String interpolation](https://stackoverflow.com/questions/37442198/how-does-string-interpolation-work-in-kotlin) to the mix with which it is a bit simpler to
-use variables in String literals. You can even call methods from one!
+A Kotlin ennek a problémának a megoldására a [String interpolációt](https://stackoverflow.com/questions/37442198/how-does-string-interpolation-work-in-kotlin) nyújtja, amivel kényelmesebben tudunk kezelni szövegeket:
 
 ```kotlin
 class KotlinUser(val name: String, val age: Int) {
@@ -132,7 +128,11 @@ class KotlinUser(val name: String, val age: Int) {
 }
 ```
 
-## Extension functions
+## Kiegészítő funkciók
+
+Dekorátorokat írni Java-ban trükkös feladat és nem mindig sikerül tökéletesen.
+
+
 Writing decorators in Java can be tricky and they are not perfect. If you want to write a decorator which
 can be used with all classes implementing `List` you can't simply use it in your decorator because it would need you to
 implement a lot of other methods so you have to extend `AbstractList`.
