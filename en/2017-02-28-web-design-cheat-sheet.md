@@ -47,6 +47,7 @@ Graphics and icons can make a wall of text more bearable but don’t over use th
 > *   Take inspiration from sites you enjoy. If you have no idea where to start you can always look at the work of others. Although ripping off someone else’s design is hardly ethical you can pick up ideas from it.
 > *   Make your site as simple as possible. There is a book which can help you with this named [“Don’t make me think”](https://www.amazon.com/Dont-Make-Me-Think-Usability/dp/0321344758). You also don’t have to create that tag cloud just because a Wordpress theme has it. [KISS](https://en.wikipedia.org/wiki/KISS_principle) goodbye to all the unnecessary complexity.
 > *   Make sure every header and content block lines up, the spacings and the alignment are the same where the content is similar and you use the same colors for the same kind of emphasis or content. <cite>Small, unintentional visual differences are like sand in the engine of your visual brain.</cite> ([source](http://www.visualmess.com/))
+> *   It’s a good idea to stick to no more than two typefaces on a website and to pair a serif with a sans serif to differentiate headers from content.
 
 
 ### Sources
