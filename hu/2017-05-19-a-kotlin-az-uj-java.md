@@ -130,12 +130,7 @@ class KotlinUser(val name: String, val age: Int) {
 
 ## Kiegészítő funkciók
 
-Dekorátorokat írni Java-ban trükkös feladat és nem mindig sikerül tökéletesen.
-
-
-Writing decorators in Java can be tricky and they are not perfect. If you want to write a decorator which
-can be used with all classes implementing `List` you can't simply use it in your decorator because it would need you to
-implement a lot of other methods so you have to extend `AbstractList`.
+Dekorátorokat írni Java-ban trükkös feladat és nem mindig sikerül tökéletesen. Például, ha egy olyan dekorátort szeretnénk írni, ami a `List` interfész összes implementációjával képes működni, akkor nem szerencsés a `List`-et kiterjesztenünk, mert úgy elég sok metódust kellene implementálnunk, ehelyett érdemesebb az `AbstractList`-ből kiindulnunk:
 
 ```java
 public class ListPresenterDecorator<T> extends AbstractList<T> {
@@ -164,21 +159,18 @@ public class ListPresenterDecorator<T> extends AbstractList<T> {
 }
 ```
 
-If you need to decorate something which does not provide useful base classes like `AbstractList`
-or is a `final` class then you are out of luck. Extension methods come to the rescue!
+Ha viszont valami olyasmit akarunk dekorálni, ami nem ad az `AbstractList`-hez hasonló könnyítéseket, vagy akár az általunk dekorálandó osztály `final`, akkor gondban vagyunk. Ebben a problémában tudnak segítséget nyújtani a kiegészítő funkciók:
 
 ```kotlin
 fun <T> List<T>.present() = this.joinToString(", ")
 ```
 
-This method acts as a decorator for all `List`s. Compared to the Java alternative this one-liner is much simpler and it will
-also work for `final` classes. Just try not to [abuse](https://www.philosophicalhacker.com/post/how-to-abuse-kotlin-extension-functions/) them.
+Ez a funkció dekorátorként viselkedik minden `List` példányon. A Java-s alternatívával összehasonlítva ez az egy soros lényegesen egyszerűbb és képes `final` osztályokon is működni. Természetesen [ez sem mindenre megoldás](https://www.philosophicalhacker.com/post/how-to-abuse-kotlin-extension-functions/).
 
-## Null safety
-Checking for `null` values involves a lot of boolean expressions and a lot of boilerplate. With the advent of Java 8
-you can finally work around this with the `Optional` class but what if the reference to an `Optional` is `null`?
-Yes, you'll get a `NullPointerException` and after 20 years of Java we still don't know **what** was null.
-Take the following example:
+## Null biztonság
+
+A `null`-ok ellenőrzése általában sok logikai művelettel és boilerplate-tel jár. A Java 8 megjelenése óta ezen már tudunk segíteni az `Optional` használatával, de mi történik akkor, ha egy `Optional` referencia a `null`? Bizony, ilyenkor megkapjuk a szokásos `NullPointerException`-t, ami a Java 20 éves fennállása óta még mindig nem képes megmondani, hogy **mi** volt a `null`.
+Nézzük meg a következő példát:
 
 ```java
 public class JavaUser {
@@ -207,7 +199,7 @@ public class JavaUser {
 }
 ```
 
-With Kotlin you have several options. If you have to interop with Java projects you can use the null safety operator (`?`):
+A Kotlin használatával több opciónk is van. Ha együtt akarunk működni Java projektekkel, vagy egy már meglévő Java projekten használunk Kotlint is, akkor lehet a `null` biztonsági operátort (`?`) használni:
 
 ```kotlin
 data class KotlinUserWithNulls(val firstName: String?,
@@ -226,10 +218,9 @@ data class KotlinUserWithNulls(val firstName: String?,
 }
 ```
 
-The code will only run after a `?` if its left operand is not `null`.
-The `let` function creates a local binding for the object it was called upon
-so here `it` will point to `it.city`.
-If you don't have to interop with Java I would suggest doing away with `null`s completely:
+A `?` jobb oldalán lévő kód csak akkor fog futni, ha a bal oldalán lévő kifejezés nem `null`. A `let` funkció létrehoz egy lokális scope-ot azzal az objektummal, amin meg lett hívva, így itt az `it` változó az `it.city`-re fog mutatni a visszatéréskor. 
+
+Ha viszont nem kell Java kóddal együttműködni, akkor jobban járunk, ha egyáltalán nem használunk `null`-t a kódunkban:
 
 ```kotlin
 data class KotlinUserWithoutNulls(val firstName: String,
@@ -246,13 +237,13 @@ data class KotlinUserWithoutNulls(val firstName: String,
 }
 ```
 
-If there are no `null`s involved (no `?`s present) it all becomes a lot more simpler.
+Ha nincs a kódbázisunkban `null` (nics `?` sehol), akkor lényegesen egyszerűbb lesz az egész.
 
 ![can't explain that]({{ site.url }}/assets/articles/cant_explain_nulls.jpg)
 
-## Type Inference
-Kotlin supports type inference which means that it can derive types from the context in which they are present.
-This is like the Java diamond notation `<>` but on steroids! Take the following example:
+## Típus kikövetkeztetés
+
+A Kotlin támogatja a típusok kikövetkeztetését, ami azt jelenti, hogy sok esetben a kontextusból ki tudja deríteni a fordító a típusok megjelölése nélkül is azt, hogy egy-egy referencia milyen típussal rendelkezik. Ez kicsit olyan, mint a gyémánt jelölés Java-ban, csak sokkal sokoldalúbb! Nézzük meg a következő példát:
 
 ```java
 public class JavaUser {
@@ -270,7 +261,7 @@ public class JavaUser {
 }
 ```
 
-This looks almost the same in Kotlin:
+Ez Kotlinban alapból hasonlóan néz ki:
 
 ```kotlin
 data class KotlinUser(val firstName: String,
@@ -289,7 +280,7 @@ data class KotlinUser(val firstName: String,
 }
 ```
 
-Until you let Kotlin figure out the types of your variables:
+Amíg rá nem hagyjuk a Kotlin fordítóra, hogy kikövetkeztesse a változóink típusait:
 
 ```kotlin
 /**
@@ -301,7 +292,7 @@ fun getFirstAddressInferred(): Address {
 }
 ```
 
-or even methods:
+vagy akár a funkciók visszatérési értékeit:
 
 ```kotlin
 /**
@@ -312,8 +303,8 @@ or even methods:
 fun getFirstAddress() = addresses.first()
 ```
 
-## No checked exceptions
-You must have seen this piece of code at least a million times:
+## Nincsenek ellenőrzött kivételek
+Az alábbi kódot valószínűleg már milliószor láthattad:
 
 ```java
 public class JavaLineLoader {
@@ -332,9 +323,7 @@ public class JavaLineLoader {
     }
 }
 ```
-
-Old school IO in Java. Note the try with resources block!
-The same would look like this in Kotlin:
+Régimódi Java IO. Ugyanez Kotlinban így néz ki:
 
 ```kotlin
 class KotlinLineLoader {
@@ -343,16 +332,15 @@ class KotlinLineLoader {
 }
 ```
 
-There are a couple of things going on here. First Kotlin does away with checked exceptions. Secondly Kotlin adds
-`use` to any `Closeable` object which basically:
+Itt több dolog is történik egyszerre. Először is a Kotlin-ban nincsenek ellenőrzött kivételek, így itt az IO végrehajtása során nem kell elkapnunk az esetlegesen keletkező kivételeket. Másodszor a Kotlinban az összes `Closeable` osztáyhoz hozzáadja az `use` műveletet, ami a dokumentáció szerint az alábbiakat végzi el:
 
 > Executes the given [block] function on this resource and then closes it down correctly whether an exception is thrown or not.
-> (Taken from Kotlin's documentation)
+> (Kivonat a Kotlin dokumentációból)
 
-What you can also see here is that an extension function (`readLines`) is added to the `File` class. This pattern is visible throughout Kotlin's rather small standard library. If you have ever used Guava, Apache Commons or something similar, chances are that you will see common functionality from them added to a JDK class as an extension function. Needless to say this will be good for your health (nerves at least).
+Ezeken kívül a `File` osztályhoz hozzáadott `readLines` funkciót is láthatjuk működés közben. Ez a minta a Kotlin által adott függvénykönytárban sokszor előforul. Ha használtál már Guava-t, vagy esetleg Apache Commons-t, akkor az azokban található függvények sokszor visszaköszönnek, mint Kotlin kiegészítő funkciók hozzáadva a JDK osztályokhoz. Ezeket használva sok kellemetlenségtől megkímélhetjük magunkat.
 
-## Lambda support
-Let's look at the lambda support in Java:
+## Lambda támogatás
+Nézzünk meg egy példát egy Java-s lambdára:
 
 ```java
 public class JavaFilterOperation {
@@ -379,11 +367,7 @@ public class JavaFilterOperation {
 }
 ```
 
-Since there is no syntax for method parameter types we have to create an interface for it.
-Note that we could use `Function<String, Boolean>` here but it only works for functions with one parameter!
-There are some interfaces in the JDK to solve this problem but if someone looks at the code they might be puzzled what
-a `BiFunction` is useful for?
-Kotlin improves on this a bit:
+Mivel a Java-ban nincsen külön szintaxis, amivel metódusok szignatúráját írhatnánk le, általában egy interfészt kell létrehozni nekik. Az alábbi példában ugyan használhatnánk a `Function<String, Boolean>` típust, de ez csak olyan függvényekre működik, amiknek egy paraméterük van. Erre vannak részmegoldások a JDK-ban, de ha valaki ránéz a kódunkra, lehet, hogy nem lesz egyértelmű számára, hogy mire is való egy `BiFunction`. Ezen egy kicsit javít a Kotlin:
 
 ```kotlin
 class KotlinFilterOperation {
@@ -399,17 +383,16 @@ class KotlinFilterOperation {
 }
 ```
 
-Kotlin adds a syntax for passing functions as parameters: `(ParamType1, ...ParamTypeN) -> ReturnType`.
-And with Kotlin you have method and field references and you can also refer to a method from a concrete object!
-Using the example above I can refer to the `filterBy` function on a concrete instance like this:
+A Kotlin szintaxist ad funkciók leírására az alábbi módon: `(ParamType1, ...ParamTypeN) -> ReturnType`.
+Mivel a Kotlin-ban vannak függvény- és mező referenciák is, ezért lehet hivatkozni egy már létező objektum egy függvényére is!
+Az alábbi példában egy konkrét példány `filterBy` műveletére hivatkozunk így:
 
 ```kotlin
 val reference = KotlinFilterOperation()::filterBy
 ```
 
-## Functional programming
-Functional programming is all the buzz nowadays and with Java 8 they have released Oracle's take on the topic: the Stream API.
-It works like this:
+## Funkcionális programozás
+Mostanában sokat hallani a funkcionális programozásról és a Java 8 megjelenésével már használhatjuk az Oracle által megálmodott eszköztárat erre a célra: A Stream API-t, ami így működik:
 
 ```java
 public class JavaUser {
@@ -425,7 +408,7 @@ public class JavaUser {
 }
 ```
 
-The Kotlin equivalent is rather similar, but subtly different:
+Ennek a Kotlin megfelelője nagyon hasonlít, de némileg különböző:
 
 ```kotlin
     fun fetchCitiesOfUsers(users: List<KotlinUser>) = users
@@ -434,13 +417,13 @@ The Kotlin equivalent is rather similar, but subtly different:
             .toSet()
 ```
 
-There is no explicit conversion to streams since all Kotlin collections support it out of the box.
-Not having to pass a lambda to `flatMap` here is a direct consequence of this.
-Collecting the result is also automatic (no need for `Collectors.to*` method calls).
-We only had to use `toSet` here because we want to return a `Set`. Otherwise `.toSet()` can be omitted.
+A lényeges különbség az, hogy nincs exlicit konverzió stream-ekre, mivel az összes Kotlin collection támogatja őket alapból.
+Ennek egyenes következménye az is, hogy a fenti példában nem kell lambda-t átadnunk a `flatMap` függvénynek.
+Az eredmények összegyűjtése is automatikus (nincs szükség a `Collectors.to*` metódusok használatára).
+Ebben a példában csak azért kellett a `toSet` függvényt használnunk, mert `Set`-et akarunk visszaadni. Ha ez nem lenne elvárás, akkor elhagyhatnánk a `.toSet()` hívást.
 
-## Kotlin-java interoperation
-Well this can be a dealbreaker for most people but JetBrains got this right:
+## Együttműködés Kotlin és Java között
+Ha az együttműködés a két nyelv között nem működik kielégítően az sokakat elrettenthet (és el is rettent más nyelvekben), de a JetBrains itt kiköszörülte a csorbát:
 
 ```java
 public class KotlinInterop {
@@ -475,30 +458,30 @@ class JavaInterop {
 }
 ```
 
-The interop is seamless and painless. Java and Kotlin can live together in the same project and Kotlin supplies a set of annotations (like `@JvmStatic` here) so Kotlin code can be called from Java without any fuss. Check [here](https://kotlinlang.org/docs/reference/java-interop.html) for further information on this topic.
+Az együttműködés akadálymentes és fájdalommentes a két kódbázis között. A Java és Kotlin osztályok projekten belül is vegyíthetők és a Kotlin ad pár annotációt (például a `@JvmStatic` a fenti példában), amivel a Kotlin osztályokat lehet felokosítani úgy, hogy Java oldalról könnyű legyen a használatuk. Erről [itt](https://kotlinlang.org/docs/reference/java-interop.html) lehet többet olvasni.
 
-As you might have seen from these examples Kotlin takes the good ideas from Java, improves upon them and tries to keep the WTF/minute counter to a minimum. The recent news about Google making Kotlin one of the supported languages on Android also underpins this.
+Ha megnézzük a fenti példákat, akkor jól láthatóvá válik egy séma: a Kotlin megőrzi a Java jó ötleteit, azokat feljavítja, míg a Java hibáit próbálja kiküszöbölni. Az, hogy a Google az Android egyik hivatalos nyelvévé tette a Kotlint szintén ezt támasztja alá.
 
-## Things to tell your boss
-So if you want to give it a try here are some pointers which will help you when negotiating with your boss and teammates:
+## Mit mondjak a főnökömnek?
+Ha esetleg meggyőztek a fentiek és kipróbálnád a Kotlint a munkahelyeden, de nincs ötleted, hogy mit mondj a főnöködnek és a csapattársaidnak, akkor adok pár tippet, amik talán segítenek majd:
 
-- Kotlin comes from industry, not academia. It solves problems faced by working programmers today.
-- It is free and Open Source
-- It comes with a useful Java to Kotlin converter tool
-- You can mix Kotlin and Java with __0 effort__
-- You can use *all* existing java tools/frameworks
-- Kotlin is supported by the best IDE on the market (with free version)
-- It is easy to read, even non-Kotlin programmers can review your code
-- **You don’t need to commit** your project to Kotlin: *you can start by writing your tests in it*
-- JetBrains is not likely to abandon Kotlin because it drives their sales
-- Kotlin has a vibrant community and even you can easily contribute to Kotlin and suggest new features using [KEEP](https://github.com/Kotlin/KEEP)
+- A Kotlin az iparból érkezett, nem egy egyetem falai közül. Valós problémákat old meg, amikkel programozók nap mint nap találkoznak
+- Ingyenes, és nyílt forráskódú
+- Van hozzá egy könnyen használható Java -> Kotlin konvertáló eszköz
+- Gyakorlatilag __0__ energiabefektetéssel keverhető a Java és a Kotlin kód
+- *Minden* már létező Java eszközt és keretrendszert lehet használni Kotlin-ból is
+- A Kotlin-hoz a piac legjobb integrált fejlesztői környezete ad támogatást (aminek van ingyenes verziója)
+- Könnyen olvasható, még a nem-Kotlin fejlesztők is át tudják nézni a kódodat
+- **Nem kell elköteleződni** a Kotlin mellett a projekteden: *elég az is, ha csak a teszteket írod az elején Kotlinban*
+- A JetBrains nem valószínű, hogy abbahagyja a nyelv fejlesztését egyhamar, mivel bevallottan is az a céljuk, hogy a bevételeiket növeljék vele
+- A Kotlin közösség meglehetősen aktív és a [KEEP](https://github.com/Kotlin/KEEP)-en akár te is tehetsz javaslatokat a nyelv irányát illetően
 
-So does it live up to the hype? Only you can tell.
-Here are a few pointers where you can start:
+A kérdést, hogy több-e a Kotlin, mint egy egyszeri hype, viszont csak Te tudod eldönteni.
+Ha ki akarod próbálni a nyelvet, akkor itt van pár tipp, hogy hol kezdd:
 
-- [Kotlin Tutorials](https://kotlinlang.org/docs/tutorials/)
-- [The Kotlin Reddit](https://www.reddit.com/r/Kotlin/)
-- [Kotlin Koans](https://kotlinlang.org/docs/tutorials/koans.html)
-- [Kotlin Blog](https://blog.jetbrains.com/kotlin/) <-- this will keep you up to date
-- [Awesome Kotlin](https://kotlin.link/) <-- Curated list of Kotlin resources and libraries
-- You can also check the source of the examples presented in this article [here](https://github.com/AppCraft-Projects/java-to-kotlin-examples).
+- [Kotlin Tutorial-ok](https://kotlinlang.org/docs/tutorials/)
+- [A Kotlin Reddit](https://www.reddit.com/r/Kotlin/)
+- [Kotlin Koan-ok](https://kotlinlang.org/docs/tutorials/koans.html)
+- [Kotlin Blog](https://blog.jetbrains.com/kotlin/) <-- napi hírek
+- [Awesome Kotlin](https://kotlin.link/) <-- Válogatott függvénykönyvtárak és források
+- Ezen kívül [itt](https://github.com/AppCraft-Projects/java-to-kotlin-examples) megtekintheted a cikkben látható példákat
