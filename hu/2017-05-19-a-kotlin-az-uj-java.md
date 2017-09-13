@@ -1,5 +1,5 @@
 > Ha már Java fejlesztőként dolgozol egy ideje, akkor talán már elgondolkoztál azon, hogy mit tanulj meg legközelebb.
-> Van jópár nyelv, amikre érdemes ránézni, például a  [Clojure](https://clojure.org/), a [Rust](https://www.rust-lang.org/en-US/) vagy a [Haskell](https://www.haskell.org/), de mi van akkor, ha olyan nyelvet szeretnél tanulni, amivel pénzt is lehet keresni és emellett kellemes vele kódot írni?
+> Van jó pár nyelv, amikre érdemes ránézni, például a  [Clojure](https://clojure.org/), a [Rust](https://www.rust-lang.org/en-US/) vagy a [Haskell](https://www.haskell.org/), de mi van akkor, ha olyan nyelvet szeretnél tanulni, amivel pénzt is lehet keresni és emellett kellemes vele kódot írni?
 > A Kotlin pont egy ilyen nyelv és ebben a cikkben szeretném bemutatni, hogy miért.
 
 ## Szóval mi is a Kotlin?
@@ -79,9 +79,9 @@ public class HexagonValueObject {
 }
 ```
 
-Az érték osztályok készítése elég nehézkes még akkor is, ha Lombokot használunk (a Lombok használatához telepíteni kell egy beépülő modult a fejlesztői környezetünkbe, ami nem minden esetben megoldható). Habár ehhez segítséget nyújt az IDEA (illetve az Eclipse), különbféle kódgeneráló eszközökkel, ezek nem igazán megbízhatóak (gondoljunk csak arra, amikor hozzáadunk egy új mezőt az osztályhoz és elfelejtjük újragenerálni az `equals` metódust.
+Az érték osztályok készítése elég nehézkes még akkor is, ha Lombok-ot használunk (a Lombok használatához telepíteni kell egy beépülő modult a fejlesztői környezetünkbe, ami nem minden esetben megoldható). Habár ehhez segítséget nyújt az IDEA (illetve az Eclipse), különböző kódgeneráló eszközökkel, ezek nem igazán megbízhatóak (gondoljunk csak arra, amikor hozzáadunk egy új mezőt az osztályhoz és elfelejtjük újragenerálni az `equals` metódust.
 
-Nézzük meg hogy néz ki ugyanez Kotlinban:
+Nézzük meg hogy néz ki ugyanez Kotlin-ban:
 
 ```kotlin
 data class HexagonDataClass(val x: Int, val y: Int, val z: Int)
@@ -199,7 +199,7 @@ public class JavaUser {
 }
 ```
 
-A Kotlin használatával több opciónk is van. Ha együtt akarunk működni Java projektekkel, vagy egy már meglévő Java projekten használunk Kotlint is, akkor lehet a `null` biztonsági operátort (`?`) használni:
+A Kotlin használatával több opciónk is van. Ha együtt akarunk működni Java projektekkel, vagy egy már meglévő Java projekten használunk Kotlin-t is, akkor lehet a `null` biztonsági operátort (`?`) használni:
 
 ```kotlin
 data class KotlinUserWithNulls(val firstName: String?,
@@ -261,7 +261,7 @@ public class JavaUser {
 }
 ```
 
-Ez Kotlinban alapból hasonlóan néz ki:
+Ez Kotlin-ban alapból hasonlóan néz ki:
 
 ```kotlin
 data class KotlinUser(val firstName: String,
@@ -323,7 +323,7 @@ public class JavaLineLoader {
     }
 }
 ```
-Régimódi Java IO. Ugyanez Kotlinban így néz ki:
+Régimódi Java IO. Ugyanez Kotlin-ban így néz ki:
 
 ```kotlin
 class KotlinLineLoader {
@@ -332,12 +332,12 @@ class KotlinLineLoader {
 }
 ```
 
-Itt több dolog is történik egyszerre. Először is a Kotlin-ban nincsenek ellenőrzött kivételek, így itt az IO végrehajtása során nem kell elkapnunk az esetlegesen keletkező kivételeket. Másodszor a Kotlin az összes `Closeable` osztáyhoz hozzáadja az `use` műveletet, ami a dokumentáció szerint az alábbiakat végzi el:
+Itt több dolog is történik egyszerre. Először is a Kotlin-ban nincsenek ellenőrzött kivételek, így itt az IO végrehajtása során nem kell elkapnunk az esetlegesen keletkező kivételeket. Másodszor a Kotlin az összes `Closeable` osztályhoz hozzáadja az `use` műveletet, ami a dokumentáció szerint az alábbiakat végzi el:
 
 > Executes the given [block] function on this resource and then closes it down correctly whether an exception is thrown or not.
 > (Kivonat a Kotlin dokumentációból)
 
-Ezeken kívül a `File` osztályhoz hozzáadott `readLines` funkciót is láthatjuk működés közben. Ez a minta a Kotlin által adott függvénykönytárban sokszor előforul. Ha használtál már Guava-t, vagy esetleg Apache Commons-t, akkor az azokban található függvények sokszor visszaköszönnek, mint Kotlin kiegészítő funkciók hozzáadva a JDK osztályokhoz. Ezeket használva sok kellemetlenségtől megkímélhetjük magunkat.
+Ezeken kívül a `File` osztályhoz hozzáadott `readLines` funkciót is láthatjuk működés közben. Ez a minta a Kotlin által adott függvény-könytárban sokszor előfordul. Ha használtál már Guava-t, vagy esetleg Apache Commons-t, akkor az azokban található függvények sokszor visszaköszönnek, mint Kotlin kiegészítő funkciók hozzáadva a JDK osztályokhoz. Ezeket használva sok kellemetlenségtől megkímélhetjük magunkat.
 
 ## Lambda támogatás
 Nézzünk meg egy példát egy Java-s lambdára:
