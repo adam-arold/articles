@@ -130,7 +130,7 @@ class KotlinUser(val name: String, val age: Int) {
 
 ## Kiegészítő funkciók
 
-Dekorátorokat írni Java-ban trükkös feladat és nem mindig sikerül tökéletesen. Például, ha egy olyan dekorátort szeretnénk írni, ami a `List` interfész összes implementációjával képes működni, akkor nem szerencsés a `List`-et kiterjesztenünk, mert úgy elég sok metódust kellene implementálnunk, ehelyett érdemesebb az `AbstractList`-ből kiindulnunk:
+Dekorátorokat írni Java-ban trükkös feladat és nem mindig sikerül tökéletesen. Például, ha egy olyan dekorátort szeretnénk készíteni, ami a `List` interfész összes implementációjával képes működni, akkor nem szerencsés a `List`-et kiterjesztenünk, mert úgy elég sok metódust kellene implementálnunk, ehelyett érdemesebb az `AbstractList`-ből kiindulnunk:
 
 ```java
 public class ListPresenterDecorator<T> extends AbstractList<T> {
@@ -220,7 +220,7 @@ data class KotlinUserWithNulls(val firstName: String?,
 
 A `?` jobb oldalán lévő kód csak akkor fog futni, ha a bal oldalán lévő kifejezés nem `null`. A `let` funkció létrehoz egy lokális scope-ot azzal az objektummal, amin meg lett hívva, így itt az `it` változó az `it.city`-re fog mutatni a visszatéréskor. 
 
-Ha viszont nem kell Java kóddal együttműködni, akkor jobban járunk, ha egyáltalán nem használunk `null`-t a kódunkban:
+Ha viszont nem kell Java kóddal együttműködni, akkor jobban járunk, ha egyáltalán nem használunk `null`-t a projektünkön:
 
 ```kotlin
 data class KotlinUserWithoutNulls(val firstName: String,
