@@ -332,7 +332,7 @@ class KotlinLineLoader {
 }
 ```
 
-Itt több dolog is történik egyszerre. Először is a Kotlin-ban nincsenek ellenőrzött kivételek, így itt az IO végrehajtása során nem kell elkapnunk az esetlegesen keletkező kivételeket. Másodszor a Kotlinban az összes `Closeable` osztáyhoz hozzáadja az `use` műveletet, ami a dokumentáció szerint az alábbiakat végzi el:
+Itt több dolog is történik egyszerre. Először is a Kotlin-ban nincsenek ellenőrzött kivételek, így itt az IO végrehajtása során nem kell elkapnunk az esetlegesen keletkező kivételeket. Másodszor a Kotlin az összes `Closeable` osztáyhoz hozzáadja az `use` műveletet, ami a dokumentáció szerint az alábbiakat végzi el:
 
 > Executes the given [block] function on this resource and then closes it down correctly whether an exception is thrown or not.
 > (Kivonat a Kotlin dokumentációból)
@@ -392,7 +392,7 @@ val reference = KotlinFilterOperation()::filterBy
 ```
 
 ## Funkcionális programozás
-Mostanában sokat hallani a funkcionális programozásról és a Java 8 megjelenésével már használhatjuk az Oracle által megálmodott eszköztárat erre a célra: A Stream API-t, ami így működik:
+Mostanában sokat hallani a funkcionális programozásról és a Java 8 megjelenésével már használhatjuk az Oracle által megálmodott eszköztárat is erre a célra: A Stream API-t, ami így működik:
 
 ```java
 public class JavaUser {
@@ -408,7 +408,7 @@ public class JavaUser {
 }
 ```
 
-Ennek a Kotlin megfelelője nagyon hasonlít, de némileg különböző:
+Ennek a Kotlin megfelelője nagyon hasonlít, de némileg más:
 
 ```kotlin
     fun fetchCitiesOfUsers(users: List<KotlinUser>) = users
@@ -417,13 +417,13 @@ Ennek a Kotlin megfelelője nagyon hasonlít, de némileg különböző:
             .toSet()
 ```
 
-A lényeges különbség az, hogy nincs exlicit konverzió stream-ekre, mivel az összes Kotlin collection támogatja őket alapból.
+A lényeges különbség az, hogy nincs explicit konverzió stream-ekre, mivel az összes Kotlin collection támogatja őket alapból.
 Ennek egyenes következménye az is, hogy a fenti példában nem kell lambda-t átadnunk a `flatMap` függvénynek.
 Az eredmények összegyűjtése is automatikus (nincs szükség a `Collectors.to*` metódusok használatára).
 Ebben a példában csak azért kellett a `toSet` függvényt használnunk, mert `Set`-et akarunk visszaadni. Ha ez nem lenne elvárás, akkor elhagyhatnánk a `.toSet()` hívást.
 
 ## Együttműködés Kotlin és Java között
-Ha az együttműködés a két nyelv között nem működik kielégítően az sokakat elrettenthet (és el is rettent más nyelvekben), de a JetBrains itt kiköszörülte a csorbát:
+Ha az együttműködés a két nyelv között nem kielégítő az sokakat elrettenthet (és el is rettent más nyelvekben), de a JetBrains itt kiköszörülte a csorbát:
 
 ```java
 public class KotlinInterop {
@@ -458,12 +458,12 @@ class JavaInterop {
 }
 ```
 
-Az együttműködés akadálymentes és fájdalommentes a két kódbázis között. A Java és Kotlin osztályok projekten belül is vegyíthetők és a Kotlin ad pár annotációt (például a `@JvmStatic` a fenti példában), amivel a Kotlin osztályokat lehet felokosítani úgy, hogy Java oldalról könnyű legyen a használatuk. Erről [itt](https://kotlinlang.org/docs/reference/java-interop.html) lehet többet olvasni.
+Az együttműködés akadálymentes és fájdalommentes a két kódbázis között. Java és Kotlin osztályok projekten belül is vegyíthetők és a Kotlin ad pár annotációt (például a `@JvmStatic` a fenti példában), amivel a Kotlin osztályokat lehet felokosítani úgy, hogy Java oldalról könnyű legyen a használatuk. Erről [itt](https://kotlinlang.org/docs/reference/java-interop.html) lehet többet olvasni.
 
-Ha megnézzük a fenti példákat, akkor jól láthatóvá válik egy séma: a Kotlin megőrzi a Java jó ötleteit, azokat feljavítja, míg a Java hibáit próbálja kiküszöbölni. Az, hogy a Google az Android egyik hivatalos nyelvévé tette a Kotlint szintén ezt támasztja alá.
+Ha megnézzük a fenti példákat, akkor jól láthatóvá válik egy séma: a Kotlin megőrzi a Java jó ötleteit, azokat feljavítja, míg a hibáit próbálja kiküszöbölni. Az, hogy a Google az Android egyik hivatalos nyelvévé tette a Kotlin-t szintén ezt támasztja alá.
 
 ## Mit mondjak a főnökömnek?
-Ha esetleg meggyőztek a fentiek és kipróbálnád a Kotlint a munkahelyeden, de nincs ötleted, hogy mit mondj a főnöködnek és a csapattársaidnak, akkor adok pár tippet, amik talán segítenek majd:
+Ha esetleg meggyőztek a fentiek és kipróbálnád a Kotlin-t a munkahelyeden, de nincs ötleted, hogy mit mondj a főnöködnek és a csapattársaidnak, akkor adok pár tippet, amik talán segítenek majd:
 
 - A Kotlin az iparból érkezett, nem egy egyetem falai közül. Valós problémákat old meg, amikkel programozók nap mint nap találkoznak
 - Ingyenes, és nyílt forráskódú
@@ -472,7 +472,7 @@ Ha esetleg meggyőztek a fentiek és kipróbálnád a Kotlint a munkahelyeden, d
 - *Minden* már létező Java eszközt és keretrendszert lehet használni Kotlin-ból is
 - A Kotlin-hoz a piac legjobb integrált fejlesztői környezete ad támogatást (aminek van ingyenes verziója)
 - Könnyen olvasható, még a nem-Kotlin fejlesztők is át tudják nézni a kódodat
-- **Nem kell elköteleződni** a Kotlin mellett a projekteden: *elég az is, ha csak a teszteket írod az elején Kotlinban*
+- **Nem kell elköteleződni** a Kotlin mellett a projekteden: *elég az is, ha csak a teszteket írod az elején Kotlin-ban*
 - A JetBrains nem valószínű, hogy abbahagyja a nyelv fejlesztését egyhamar, mivel bevallottan is az a céljuk, hogy a bevételeiket növeljék vele
 - A Kotlin közösség meglehetősen aktív és a [KEEP](https://github.com/Kotlin/KEEP)-en akár te is tehetsz javaslatokat a nyelv irányát illetően
 
