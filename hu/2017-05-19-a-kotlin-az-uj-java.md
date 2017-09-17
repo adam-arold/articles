@@ -1,6 +1,5 @@
-> Ha már Java fejlesztőként dolgozol egy ideje, akkor talán már elgondolkoztál azon, hogy mit tanulj meg legközelebb.
-> Van jó pár nyelv, amikre érdemes ránézni, például a  [Clojure](https://clojure.org/), a [Rust](https://www.rust-lang.org/en-US/) vagy a [Haskell](https://www.haskell.org/), de mi van akkor, ha olyan nyelvet szeretnél tanulni, amivel pénzt is lehet keresni és emellett kellemes vele kódot írni?
-> A Kotlin pont egy ilyen nyelv és ebben a cikkben szeretném bemutatni, hogy miért.
+> Ha már Java fejlesztőként dolgozol egy ideje, talán már elgondolkoztál azon, hogy melyik legyen a következő nyelv, amibe beleásod magad.
+> Érdemes ránézni például a  [Clojure](https://clojure.org/), a [Rust](https://www.rust-lang.org/en-US/) vagy a [Haskell](https://www.haskell.org/) izgalmas megoldásaira, de ha olyan nyelvvel szeretnél foglalkozni, amivel pénzt is lehet keresni és emellett kellemes vele kódot írni, akkor válasszd a Kotlint.
 
 ## Szóval mi is a Kotlin?
 
@@ -13,11 +12,11 @@
 
 Ha elolvassuk a dokumentációt, akkor találhatunk még pár ígéretes dolgot:
 - Többet elérhetünk kevesebb kód írásával
-- Megold sok problémát a Java-val
+- Megoldást kínál sok, Java-ban fellelhető problémára
 - Továbbra is használhatjuk a Java ökoszisztémát vele
 - Frontend és backend kódot is tudunk írni ugyanazon a nyelven
 - 100%-ban együttműködő a Java-val
-- Jobban teljesít e tekintetben, mint más alternatívák (Clojure, Scala)
+- E tekintetben jobban teljesít, mint más alternatívák (Clojure, Scala)
 - És csak egy vékony réteg komplexitást ad hozzá a Java-hoz
 
 Jól hangzik, nem? Mielőtt rátenyerelünk a Letöltés gombra azért még tekintsük át, hogy mit is jelent ez a gyakorlatban.
@@ -79,19 +78,19 @@ public class HexagonValueObject {
 }
 ```
 
-Az érték osztályok készítése elég nehézkes még akkor is, ha Lombok-ot használunk (a Lombok használatához telepíteni kell egy beépülő modult a fejlesztői környezetünkbe, ami nem minden esetben megoldható). Habár ehhez segítséget nyújt az IDEA (illetve az Eclipse), különböző kódgeneráló eszközökkel, ezek nem igazán megbízhatóak (gondoljunk csak arra, amikor hozzáadunk egy új mezőt az osztályhoz és elfelejtjük újragenerálni az `equals` metódust.
+Az értékosztályok készítése elég nehézkes még akkor is, ha Lombok-ot használunk (a Lombok használatához telepíteni kell egy beépülő modult a fejlesztői környezetünkbe, ami nem minden esetben megoldható). Habár ehhez segítséget nyújt az IDEA (illetve az Eclipse), különböző kódgeneráló eszközökkel, ezek nem igazán megbízhatóak (gondoljunk csak arra, amikor hozzáadunk egy új mezőt az osztályhoz és elfelejtjük újragenerálni az `equals` metódust.
 
-Nézzük meg hogy néz ki ugyanez Kotlin-ban:
+Nézzük meg, hogy néz ki ugyanez Kotlin-ban:
 
 ```kotlin
 data class HexagonDataClass(val x: Int, val y: Int, val z: Int)
 ```
 
-Hoppá! Ehhez lényegesen kevesebbet kellett gépelni a Java verzióhoz képest! A Kotlin adat osztályok a következőket adják:
+Hoppá! Ehhez lényegesen kevesebbet kellett gépelni a Java-verzióhoz képest! A Kotlin adatosztályok a következőket adják:
 - `equals` + `hashCode`,
 - `toString` és
 - getterek + setterek
-Ezeken kívül megkapjuk a `copy` metódust, amivel másolatokat tudunk készíteni már meglévő adat osztály példányokról. Erről [itt](https://kotlinlang.org/docs/reference/data-classes.html) lehet többet olvasni.
+Ezeken kívül megkapjuk a `copy` metódust, amivel másolatokat tudunk készíteni már meglévő adatosztály példányokról. Erről [itt](https://kotlinlang.org/docs/reference/data-classes.html) lehet többet olvasni.
 
 
 
@@ -199,7 +198,7 @@ public class JavaUser {
 }
 ```
 
-A Kotlin használatával több opciónk is van. Ha együtt akarunk működni Java projektekkel, vagy egy már meglévő Java projekten használunk Kotlin-t is, akkor lehet a `null` biztonsági operátort (`?`) használni:
+A Kotlin használatával több opciónk is van. Ha együtt akarunk működni Java-projektekkel, vagy egy már meglévő Java-projekten használunk Kotlin-t is, akkor lehet a `null` biztonsági operátort (`?`) használni:
 
 ```kotlin
 data class KotlinUserWithNulls(val firstName: String?,
@@ -220,7 +219,7 @@ data class KotlinUserWithNulls(val firstName: String?,
 
 A `?` jobb oldalán lévő kód csak akkor fog futni, ha a bal oldalán lévő kifejezés nem `null`. A `let` funkció létrehoz egy lokális scope-ot azzal az objektummal, amin meg lett hívva, így itt az `it` változó az `it.city`-re fog mutatni a visszatéréskor. 
 
-Ha viszont nem kell Java kóddal együttműködni, akkor jobban járunk, ha egyáltalán nem használunk `null`-t a projektünkön:
+Ha viszont nem kell Java-kóddal együttműködni, akkor jobban járunk, ha egyáltalán nem használunk `null`-t a projektünkön:
 
 ```kotlin
 data class KotlinUserWithoutNulls(val firstName: String,
@@ -243,7 +242,7 @@ Ha nincs a kódbázisunkban `null` (nics `?` sehol), akkor lényegesen egyszerű
 
 ## Típus kikövetkeztetés
 
-A Kotlin támogatja a típusok kikövetkeztetését, ami azt jelenti, hogy sok esetben a kontextusból ki tudja deríteni a fordító a típusok megjelölése nélkül is azt, hogy egy-egy referencia milyen típussal rendelkezik. Ez kicsit olyan, mint a gyémánt jelölés Java-ban, csak sokkal sokoldalúbb! Nézzük meg a következő példát:
+A Kotlin támogatja a típusok kikövetkeztetését, ami azt jelenti, hogy sok esetben a kontextusból ki tudja deríteni a fordító a típusok megjelölése nélkül is azt, hogy egy-egy referencia milyen típussal rendelkezik. Ez kicsit olyan, mint a gyémántjelölés Java-ban, csak sokkal sokoldalúbb! Nézzük meg a következő példát:
 
 ```java
 public class JavaUser {
@@ -280,7 +279,7 @@ data class KotlinUser(val firstName: String,
 }
 ```
 
-Amíg rá nem hagyjuk a Kotlin fordítóra, hogy kikövetkeztesse a változóink típusait:
+Amíg rá nem hagyjuk a Kotlin-fordítóra, hogy kikövetkeztesse a változóink típusait:
 
 ```kotlin
 /**
@@ -292,7 +291,7 @@ fun getFirstAddressInferred(): Address {
 }
 ```
 
-vagy akár a funkciók visszatérési értékeit:
+Vagy akár a funkciók visszatérési értékeit:
 
 ```kotlin
 /**
@@ -337,7 +336,7 @@ Itt több dolog is történik egyszerre. Először is a Kotlin-ban nincsenek ell
 > Executes the given [block] function on this resource and then closes it down correctly whether an exception is thrown or not.
 > (Kivonat a Kotlin dokumentációból)
 
-Ezeken kívül a `File` osztályhoz hozzáadott `readLines` funkciót is láthatjuk működés közben. Ez a minta a Kotlin által adott függvény-könytárban sokszor előfordul. Ha használtál már Guava-t, vagy esetleg Apache Commons-t, akkor az azokban található függvények sokszor visszaköszönnek, mint Kotlin kiegészítő funkciók hozzáadva a JDK osztályokhoz. Ezeket használva sok kellemetlenségtől megkímélhetjük magunkat.
+Ezeken kívül a `File` osztályhoz hozzáadott `readLines` funkciót is láthatjuk működés közben. Ez a minta a Kotlin által adott függvény-könytárban sokszor előfordul. Ha használtál már Guava-t vagy esetleg Apache Commons-t, akkor az azokban található függvények sokszor visszaköszönnek mint Kotlin kiegészítő funkciók hozzáadva a JDK osztályokhoz. Ezeket használva sok kellemetlenségtől megkímélhetjük magunkat.
 
 ## Lambda támogatás
 Nézzünk meg egy példát egy Java-s lambdára:
@@ -392,7 +391,7 @@ val reference = KotlinFilterOperation()::filterBy
 ```
 
 ## Funkcionális programozás
-Mostanában sokat hallani a funkcionális programozásról és a Java 8 megjelenésével már használhatjuk az Oracle által megálmodott eszköztárat is erre a célra: A Stream API-t, ami így működik:
+Mostanában sokat hallani a funkcionális programozásról és a Java 8 megjelenésével már használhatjuk az Oracle által megálmodott eszköztárat, a Stream API-tis erre a célra, ami így működik:
 
 ```java
 public class JavaUser {
@@ -408,7 +407,7 @@ public class JavaUser {
 }
 ```
 
-Ennek a Kotlin megfelelője nagyon hasonlít, de némileg más:
+Ennek a megfelelője a Kotlinba nagyon hasonló, de némileg mégis más:
 
 ```kotlin
     fun fetchCitiesOfUsers(users: List<KotlinUser>) = users
@@ -458,7 +457,7 @@ class JavaInterop {
 }
 ```
 
-Az együttműködés akadálymentes és fájdalommentes a két kódbázis között. Java és Kotlin osztályok projekten belül is vegyíthetők és a Kotlin ad pár annotációt (például a `@JvmStatic` a fenti példában), amivel a Kotlin osztályokat lehet felokosítani úgy, hogy Java oldalról könnyű legyen a használatuk. Erről [itt](https://kotlinlang.org/docs/reference/java-interop.html) lehet többet olvasni.
+Az együttműködés akadály- és fájdalommentes a két kódbázis között. Java- és Kotlin-osztályok projekten belül is vegyíthetők és a Kotlin ad pár annotációt (például a `@JvmStatic` a fenti példában), amivel a Kotlin osztályokat lehet felokosítani úgy, hogy Java oldalról könnyű legyen a használatuk. Erről [itt](https://kotlinlang.org/docs/reference/java-interop.html) lehet többet olvasni.
 
 Ha megnézzük a fenti példákat, akkor jól láthatóvá válik egy séma: a Kotlin megőrzi a Java jó ötleteit, azokat feljavítja, míg a hibáit próbálja kiküszöbölni. Az, hogy a Google az Android egyik hivatalos nyelvévé tette a Kotlin-t szintén ezt támasztja alá.
 
@@ -466,15 +465,15 @@ Ha megnézzük a fenti példákat, akkor jól láthatóvá válik egy séma: a K
 Ha esetleg meggyőztek a fentiek és kipróbálnád a Kotlin-t a munkahelyeden, de nincs ötleted, hogy mit mondj a főnöködnek és a csapattársaidnak, akkor adok pár tippet, amik talán segítenek majd:
 
 - A Kotlin az iparból érkezett, nem egy egyetem falai közül. Valós problémákat old meg, amikkel programozók nap mint nap találkoznak
-- Ingyenes, és nyílt forráskódú
+- Ingyenes és nyílt forráskódú
 - Van hozzá egy könnyen használható Java -> Kotlin konvertáló eszköz
-- Gyakorlatilag __0__ energiabefektetéssel keverhető a Java és a Kotlin kód
-- *Minden* már létező Java eszközt és keretrendszert lehet használni Kotlin-ból is
+- Gyakorlatilag __0__ energiabefektetéssel keverhető a Java- és a Kotlin-kód
+- *Minden* már létező Java-eszközt és keretrendszert lehet használni Kotlin-ból is
 - A Kotlin-hoz a piac legjobb integrált fejlesztői környezete ad támogatást (aminek van ingyenes verziója)
 - Könnyen olvasható, még a nem-Kotlin fejlesztők is át tudják nézni a kódodat
 - **Nem kell elköteleződni** a Kotlin mellett a projekteden: *elég az is, ha csak a teszteket írod az elején Kotlin-ban*
 - A JetBrains nem valószínű, hogy abbahagyja a nyelv fejlesztését egyhamar, mivel bevallottan is az a céljuk, hogy a bevételeiket növeljék vele
-- A Kotlin közösség meglehetősen aktív és a [KEEP](https://github.com/Kotlin/KEEP)-en akár te is tehetsz javaslatokat a nyelv irányát illetően
+- A Kotlin közösség meglehetősen aktív és a [KEEP](https://github.com/Kotlin/KEEP)-en akár te is tehetsz javaslatokat a nyelv fejlesztési irányát illetően
 
 A kérdést, hogy több-e a Kotlin, mint egy egyszeri hype, viszont csak Te tudod eldönteni.
 Ha ki akarod próbálni a nyelvet, akkor itt van pár tipp, hogy hol kezdd:
