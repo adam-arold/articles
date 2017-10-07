@@ -24,8 +24,7 @@ class Foo {
 If you try to instantiate this you'll get a `NullPointerException` because `bar` tried to access the `length` of `c` before it was initialized.
 Of course the application logic was flawed here but you still got an `Exception`. The worst part of this is that the IDE won't complain about this.
 
-The takeaway here is that Kotlin *will help* you in a lot of cases (nearly all) to avoid `null`, you can't forget about it and from time to time
-you'll encounter things like this.
+The takeaway here is that Kotlin *will help* you in a lot of cases (nearly all) to avoid `null`, but you can't forget about it and from time to time you'll encounter things like this.
 
 ## Handling `null`s from the JDK
 
