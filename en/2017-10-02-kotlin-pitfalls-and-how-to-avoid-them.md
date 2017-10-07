@@ -144,16 +144,14 @@ data class Foo(val bars: List<String>)
 Take a look at this example:
 
 ```kotlin
-    class MyApi {
+class MyApi {
 
-        fun operation0() {
-
-        }
-
-        internal fun hiddenOperation() {
-            
-        }
+    fun operation0() {
     }
+
+    internal fun hiddenOperation() {            
+    }
+}
 ```
 
 If you use classes like this from other Kotlin projects the `internal` keyword will be respected. If you look at this
