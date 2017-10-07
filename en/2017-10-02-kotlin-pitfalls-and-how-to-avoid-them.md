@@ -191,7 +191,25 @@ This can be problematic when they are non-generic and represent operations which
 ```
 
 Now everybody on your project will scratch their heads when they bump into this.
-I'd suggest thinking twice before writing extension functions to JDK classes.
+So I think it is good if you think twice before you write extension methods but they can be really powerful. here are some examples which might be useful:
+
+```kotlin
+/**
+ * Returns an element of this [List] wrapped in an Optional
+ * which is empty if `idx` is out of bounds.
+ */
+fun <T> List<T>.getIfPresent(idx: Int) =
+        if (idx >= size) {
+            Optional.empty()
+        } else {
+            Optional.of(get(idx))
+        }
+
+/**
+ * Negates `isPresent`.
+ */
+fun <T> Optional<T>.isNotPresent() = isPresent.not()
+```
 
 ## Unit returning lambdas vs Java SAM conversion
 
