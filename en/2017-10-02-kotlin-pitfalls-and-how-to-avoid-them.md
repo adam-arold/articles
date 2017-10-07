@@ -183,9 +183,9 @@ You can - for example - write extension functions to JDK classes which will be v
 This can be problematic when they are non-generic and represent operations which only make sense in a local context:
 
 ```kotlin
-    fun String.extractCustomerName() : String {
-        // ...
-    }
+fun String.extractCustomerName() : String {
+    // ...
+}
 ```
 
 Now everybody on your project will scratch their heads when they bump into this.
