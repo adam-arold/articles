@@ -191,7 +191,7 @@ This can be problematic when they are non-generic and represent operations which
 ```
 
 Now everybody on your project will scratch their heads when they bump into this.
-So I think it is good if you think twice before you write extension methods but they can be really powerful. here are some examples which might be useful:
+So I think it is good if you think twice before you write extension functions but they can be really powerful. here are some examples which might be useful:
 
 ```kotlin
 /**
