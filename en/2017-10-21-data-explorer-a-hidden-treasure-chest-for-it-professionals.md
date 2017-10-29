@@ -34,7 +34,7 @@ if you are not familiar with the concepts detailed here.
 If you navigate to the [compose query](https://data.stackexchange.com/stackoverflow/query/new) page you'll be presented
 with something like this:
 
-> image here
+![SEDE compose query]({{ site.url }}/assets/articles/sede_compose_query.png)
 
 Here you can write *SQL* queries against the Stack Overflow database. On the right there are the tables which you can
 query and in the center you can write the query itself. So let's write one:
@@ -117,7 +117,7 @@ order by u.Reputation desc, u.LastAccessDate desc
 
 And that's it! Now you can look for users who live in your specified city and have posts by your specified tag like this:
 
-> image here
+![SEDE query result]({{ site.url }}/assets/articles/sede_query_result.png)
 
 ## What if I don't want to write SQL?
 
@@ -126,7 +126,7 @@ some of the questions you have don't fret, there is a solution for your problem.
 function and if you try to look for something chances are that there is a prepared query for your problem. Let's look
 at what we have if we search for the exact same thing I detailed above:
 
-> image here
+![SEDE search result]({{ site.url }}/assets/articles/sede_search_result.png)
 
 Most of these won't work out of the box so you have to try them but you'll get there eventually.
 
