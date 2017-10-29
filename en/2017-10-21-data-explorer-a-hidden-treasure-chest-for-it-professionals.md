@@ -1,4 +1,4 @@
-> If you work in the IT industry you might have wondered about what technology do others use in the field and which tools are trending.
+> If you work in the IT industry you might have wondered about what technology others use in the field and which tools are trending.
 > There are a lot of resources where you can read about this like [Google Trends](https://trends.google.com/trends/)
 > or [ITJobswatch](https://www.itjobswatch.co.uk) but what if you want more insight?
 > Enter the [Stack Exchange Data Explorer](https://data.stackexchange.com/) where you can find fine grained information
@@ -22,10 +22,10 @@ questions but most of them are related to Stack Overflow like "How many upvotes 
 "Jon Skeet comparison". These don't seem to be useful out of the context of the site itself, but you can define your
 own queries by navigating to the [compose query](https://data.stackexchange.com/stackoverflow/query/new) page.
 
-Let's look at a practical example!
+## A practical example
 
 Let's say that you have just moved to city `x` and you want to connect with other people in that area who are using
-the same technology `y` you use. Stack Overflow aggregates users who are enthusiastic about their
+the same technology as you. Stack Overflow aggregates users who are enthusiastic about their
 craft so let's write a query which helps us find them.
 
 > Note that Data Explorer comes with a very nice tutorial which you can check [here](https://data.stackexchange.com/tutorial)
@@ -58,7 +58,7 @@ where Location like '%##Location##%'
 order by Reputation desc
 ```
 
-When you run this SEDE will ask you to specify a Location. I suggest you should use a city name and only supply more
+When you run this, SEDE will ask you to specify a Location. I suggest you should use a city name and only supply more
 information (like `Connecticut, USA`) if you know that there are multiple cities with the name you like to use.
 
 Now SEDE comes with another useful feature: it can put links into the results by using the syntax `[* Link]` like this:
