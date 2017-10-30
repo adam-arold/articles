@@ -1,5 +1,10 @@
-> After reading a lot of guides and tutorials about design I decided to pull them together in a simple cheat sheet. The aim of this document is not to teach you how to design things. It only acts as a checklist for you to be able to tell whether you did it right or not. I am not a designer myself so it comes without any warranty. If you think there are mistakes in this document feel free to comment on it or you can send an e-mail with your suggestions.
-
+<div id="tldr">
+After reading a lot of guides and tutorials about design I decided to pull them together in a simple cheat sheet.
+The aim of this document is not to teach you how to design things.
+It only acts as a checklist for you to be able to tell whether you did it right or not. 
+I am not a designer myself so it comes without any warranty.
+If you think there are mistakes in this document feel free to comment on it or you can send an e-mail with your suggestions.
+</div>
 
 ## Do I have enough content?
 
