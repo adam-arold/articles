@@ -71,13 +71,7 @@ For a lot of Java developers [Spring](https://docs.spring.io/spring/docs/5.0.2.R
 
 #### Sparkjava
 
-[Sparkjava](http://sparkjava.com/) is a minimalistic (micro)web framework. You can get started with it in practically zero time investment and if you come from node.js it is also a very good choice:
-
-> Lately, a lot of server-side web development has been taken over by NodeJS, but a growing number of NodeJS developers are using TypeScript and other statically typed languages that compile to JavaScript. Why not go all the way and use a language that was actually designed with types, and intended to run on the server-side? You also get all the benefits of running your application on the JVM, where libraries aren’t deprecated every day. If you’re coming from ExpressJS, then Spark’s syntax will feel very familiar, and unlike a lot of JavaScript web frameworks, Spark won’t be deprecated tomorrow.
-> 
-> -- from the Sparkjava website
-
-You also can't get more minimal than this:
+[Sparkjava](http://sparkjava.com/) is a minimalistic (micro)web framework. You can get started with it in practically zero time investment and if you come from node.js it is also a very good choice. You also can't get more minimal than this:
 
 {% gist ba295d07cd9970e605f1ab6792ddc4a3 %}
 
