@@ -159,7 +159,3 @@ Keep it in mind though that you can suggest improvements to Kotlin itself using 
 Kotlin is a very popular language right now and I **do agree** that it is a *Turbo* Java, but you should take any hype with a grain of salt. As we have seen above Kotlin has its own pitfalls which you should be aware of if you plan to use it.
 
 All in all I think that the problems mentioned above can either be worked around easily or not critical and they don't limit the usability of the language itself.
-
-
-
-

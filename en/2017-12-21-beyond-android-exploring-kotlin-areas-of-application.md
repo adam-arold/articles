@@ -1,3 +1,7 @@
+<div id="series">
+This article is part of a <a href="http://the-cogitator.com/2017/12/21/beyond-android-exploring-kotlin-areas-of-application.html">series</a>.
+Check out the next part <a href="http://the-cogitator.com/2018/01/06/going-beyond-android-kotlin-on-the-backend.html">here</a>
+</div>
 <div id="tldr">
 If you have written something in Kotlin chances are that you wrote it for Android. Kotlin, however, has other areas where it can be useful.
 In the following series, we'll explore what other fields exist where Kotlin can shine and discuss how you can take advantage of them.
